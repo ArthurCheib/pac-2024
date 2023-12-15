@@ -1,0 +1,93 @@
+---
+title: "<span style='color:#FFC61A'> Introduction to R </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> Arthur Cheib </span>"
+format:
+  revealjs:
+    incremental: true
+    style: custom.css
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: false
+    menu: false
+editor: visual
+---
+
+# [ About myself ]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
+
+## {background-image="images/ach-photo-fb2.jpg" background-opacity="0.15"}
+
+- **Belo Horizonte - Brazil**
+- **Education**
+  - Bachelor: Public Administration'
+  - Master: Public Policy - University of Chicago 23'
+- **Professional Experience**
+  - Data Scientist - Government
+  - Research Director - Non-profit
+  - Consultant at the World Bank
+  - UChicago Instructor: Coding Lab for Public Policy
+  - Faculty: Belavista University - Brazil
+
+# [ Policy Analytics Credential 2024 ]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
+
+## [About the Program]{style="color:#9B0E2A"}
+
+*PAC starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.*
+
+-   **Practical Coding Skills:** programming in R
+-   **Analytics Skills:** statistics fundamentals
+-   **Policy Insights:** inside the Graduate School World
+-   **Data Exploration Workshops:** live coding team sessions
+
+# [ Learning Methodology ]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
+
+## A few tips!
+
+::: {.fragment}
+1. You can only learn how to code in R, coding...
+
+2. Work in teams is your 2nd best option
+
+3. If you struggling, reach out
+... **we are here for you!**
+
+4. Leverage online tools to learn, not to get answers!
+
+5. Practice, practice, practice (consistency > intensity)
+
+:::
+
+# [Programming in R]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
+
+## {background-image="images/r-background.png" background-opacity="0.50"}
+
+## {background-image="images/graph-r1.png" background-opacity="0.50"}
+
+### **Extremely Powerful for Data Analysis**
+
+## {background-image="images/graph-r2.png" background-opacity="0.50"}
+
+### **Strong statistical analysis capabilities**
+
+## {background-image="images/graph-r3.png" background-opacity="0.25"}
+
+### **Widely used in academia**
+
+## {background-image="images/graph-r4.png"}
+
+### <span style='color:#FFFFFF'>**Extensive community and resources**<span>
+
+## {background-image="images/graph-r5.jpeg" background-opacity="0.50"}
+
+### **Open-source and free to use**
+
+## {background-image="images/graph-r6.jpeg" background-opacity="0.50"}
+
+### **Easy to integrate with other languages/tools**
+
+## {background-image="images/graph-r7.png" background-opacity="0.50"}
+
+### **Versatile**
+
+
