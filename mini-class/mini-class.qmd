@@ -14,13 +14,18 @@ editor: visual
 
 ## [Arthur Cheib]{style="color:#9B0E2A"}
 
+-   Data Scientist - Government
+-   Research Director - Non-profit
 -   Harris MPP 23'
 -   Consultant at the World Bank
 -   UChicago Instructor
+      - Coding Lab for Public Policy - PPHA 30110
 
 # Policy Analytics Credential 2024 {background-color="#FFC61A"}
 
 ## [About the Program]{style="color:#9B0E2A"}
+
+*PAC starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.*
 
 -   **Practical Coding Skills:** programming in R
 -   **Analytics Skills:** statistics fundamentals
@@ -74,7 +79,7 @@ Safe Passage Program:
 
 ## Chicago Data Portal {background="#43464B" background-image="images/data-portal-wb.png"}
 
-## Reproducible Research
+## Automation
 
 :::{.panel-tabset}
 
@@ -186,6 +191,14 @@ After: 49 crimes/yr
 
 ## Step 6 - CPS 600+ Schools
 
+![](images/step6-for-chicago.png)
+
+# Conveying the Results {background-color="#FFC61A"}
+
+## With numbers ... 
+
+## 
+
 ```{r}
 #| echo: true
 #| eval: false
@@ -232,14 +245,9 @@ panel_lm2 <- plm(formula = attendance_rate ~ safe_passage,
 coeftest(panel_lm2, vcov. = vcovHC, type = "HC1")
 ```
 
-
-# Conveying the Results {background-color="#FFC61A"}
-
-## With numbers ... 
-
 Results indicated that program participation led to an average reduction of **7.5% drop** in the crime rate around the school in the first year.
 
--
+##
 
 Furthermore, schools in the program experienced a **2% boost in attendance rates.**
 
