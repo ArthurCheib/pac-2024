@@ -1,0 +1,249 @@
+---
+title: "<span style='color:#9B0E2A'> Policy Analytics Credential 2024 </span>"
+subtitle: "<span style='color:#FFC61A'> Developing Programming & Statistical skills for Policy Analysis </span>"
+format:
+  revealjs:
+    incremental: true
+    style: custom.scss
+    footer: Learn more -  [Policy Analytics Credential](https://info.harris.uchicago.edu/policy-analytics-credential)
+    logo: images/harris_logo.png
+editor: visual
+---
+
+# Graduate Instructor {background-color="#FFC61A"}
+
+## [Arthur Cheib]{style="color:#9B0E2A"}
+
+-   Data Scientist - Government
+-   Research Director - Non-profit
+-   Harris MPP 23'
+-   Consultant at the World Bank
+-   UChicago Instructor
+    -   Coding Lab for Public Policy - PPHA 30110
+
+# Policy Analytics Credential 2024 {background-color="#FFC61A"}
+
+## [About the Program]{style="color:#9B0E2A"}
+
+*PAC starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.*
+
+-   **Practical Coding Skills:** programming in R
+-   **Analytics Skills:** statistics fundamentals
+-   **Policy Insights:** inside the Graduate School World
+-   **Data Exploration Workshops:** live coding team sessions
+
+# Implementing PAC's Analytical Toolkit {background-color="#FFC61A"}
+
+## Starting the Analysis
+
+::: panel-tabset
+### Public Policy
+
+Finding the topic: **Chicago Public Schools**
+
+Safe Passage Program:
+
+-- *The Chicago Public Schools Safe Passage program is offered to select schools to provide a positive, trusted adult presence for students as they travel to and from school.*
+
+### The Analysis
+
+. Obtaining the Data
+
+. Cleaning the Data: putting it in a consumable format
+
+. Transforming the Data: what is the information hidden in it?
+
+. Running our Analysis
+
+. Conveying the Results
+
+### Different Roles
+
+-- Data Analyst for the Office of the Mayor of Chicago
+
+-- Graduate Research at a Education Policy Lab
+
+-- Research Analyst at a Think Thank
+
+-- Pre-doc student at UChicago
+
+-- Data Scientist at Business Company
+
+-- Quantitative Analyst at a non-profit
+
+-- Consultant at the World Bank
+:::
+
+# Obtaining the Data {background-color="#FFC61A"}
+
+## Chicago Data Portal {background="#43464B" background-image="images/data-portal-wb.png"}
+
+## Automation
+
+::: panel-tabset
+### The Process
+
+![flow1](images/flow.jpg)
+
+### Excel
+
+![flow2](images/flow-with-excel.jpg)
+
+### Implementing (R)
+
+![flow3](images/flow-with-R.jpg)
+
+### Code
+
+```{r}
+#| echo: true
+#| eval: false
+## This code aims to download raw data from all schools in the Safe Passage Program ##
+
+## Libraries
+library(tidyverse)
+library(RSocrata)
+library(here)
+
+## Getting the data through the API endpoit
+my_token <- readline(prompt = 'Insert token: ')
+my_email <- readline(prompt = 'Insert email: ')
+my_password <- readline(prompt = 'Insert password: ')
+
+## Queries that will be used
+query <- "select the_geom, schoolid"
+query_2014 <- "select the_geom, school_id"
+
+## Dataset IDs
+dataset_ID <- list(`2013` = 'rq9p-k3zy',
+                   `2014` = 't8dp-yzqg',
+                   `2015` = 'kvm8-tw23',
+                   `2016` = '65ce-agii',
+                   `2017` = 'v3t6-2wdk')
+
+## Function to download all our data
+get_dataset <- function(dic_year_code) {
+  
+  for(year in names(dic_year_code)) {
+    id_temp <- dic_year_code[[year]]
+    
+    # Fetch raw data
+    raw_temp <- read.socrata(paste0("https://data.cityofchicago.org/resource/", id_temp, ".json"),
+                             app_token = my_token,
+                             email = my_email,
+                             password = my_password)
+    
+    # Save the raw data using `here`
+    write_csv(raw_temp,
+              here("raw_data", paste0('safepassage_', year, '.csv')))
+  }
+}
+
+# Downloading the datasets
+get_dataset(dic_year_code = dataset_ID)
+```
+:::
+
+# Cleaning the Data {background-color="#FFC61A"}
+
+## Data is rarely ready to be consumed
+
+![](images/data-wrangling.jpeg)
+
+# Running our Analysis {background-color="#FFC61A"}
+
+## Step 1 - Identifying the schools
+
+![](images/step1-school.png)
+
+## Step 2 - Crimes' locations
+
+![](images/step2-crimes.png)
+
+## Step 3 - The Policy's Area of Influence
+
+![](images/step3-school-surrounding)
+
+## Step 4 - Computing geodistance
+
+![](images/step4-compute-distance.png)
+
+## Step 5 - Estimating Policy Impact
+
+::: columns
+::: {.column width="50%"}
+Before: 109 crimes/yr ![](images/step5-before.png)
+:::
+
+::: {.column width="50%"}
+After: 49 crimes/yr ![](images/step5-after.png)
+:::
+:::
+
+# Problem? {background-color="#FFC61A"}
+
+## Step 6 - CPS 600+ Schools
+
+![](images/step6-for-chicago.png)
+
+# Conveying the Results {background-color="#FFC61A"}
+
+## With numbers ...
+
+## 
+
+```{r}
+#| echo: true
+#| eval: false
+## This code runs our fixed effects regression ##
+
+## Libraries
+library(tidyverse)
+library(here)
+library(plm)
+library(lmtest)
+
+## Loading the data + transformation to run the fe model
+data_fe <- read_csv(here('clean_data', 'fixed_effects_data.csv'))
+
+fe <- data_fe %>% 
+  filter(crime_school_distance <= 0.100) %>% 
+  group_by(school_id, year, treatment) %>% 
+  summarize(total_crime = n_distinct(crime_id),
+            attendance_rate = mean(school_attendance, na.rm = TRUE)) %>% 
+  ungroup() %>% 
+  mutate(policy_year = 2015) %>%
+  mutate(safe_passage = if_else(year >= policy_year & treatment == 1, 'Yes', 'No')) %>% 
+  select(-treatment) %>%  
+  select(1,2,3,6,5,4) %>% 
+  arrange(desc(school_id)) %>% 
+  filter(!is.na(attendance_rate))
+
+# Checking how crime and being a school in a treated area are related
+panel_lm1 <- plm(formula = total_crime ~ safe_passage,
+                 data = fe,
+                 model = 'within',
+                 index = c('year', 'school_id'),
+                 effect = 'twoways')
+
+coeftest(panel_lm1, vcov. = vcovHC, type = "HC1")
+
+# Checking how attendance and being a school in a treated area are related
+panel_lm2 <- plm(formula = attendance_rate ~ safe_passage,
+                 data = fe,
+                 model = 'within',
+                 index = c('year', 'school_id'),
+                 effect = 'twoways')
+
+coeftest(panel_lm2, vcov. = vcovHC, type = "HC1")
+```
+
+Results indicated that program participation led to an average reduction of **7.5% drop** in the crime rate around the school in the first year.
+
+## 
+
+Furthermore, schools in the program experienced a **2% boost in attendance rates.**
+
+## With visualization ...
+
+# Thank you! {background-color="#FFC61A"}

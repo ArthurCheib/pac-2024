@@ -1,0 +1,353 @@
+---
+title: "<span style='color:#FFC61A'> Spatial Data in R </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> Introduction to Leaflet </span>"
+format:
+  revealjs:
+    incremental: true
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: true
+    menu: true
+    code-line-numbers: true
+    embed-resources: true
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+## Data we will be using to plot!
+library(gapminder)
+library(tidyverse)
+library(ggthemes)
+library(leaflet)
+data(gapminder)
+```
+
+# [Today's agenda]{style="color:#FFC61A"}
+
+# [Spatial Data in R]{style="color:#FFC61A"}
+
+-   Data that represents physical locations on Earth.
+    -   Data is described by coordinates: lat / long
+-   Allow us to unveil patterns and trends geographically.
+-   R's ggplot2 and ggmap offer powerful visualization tools.
+-   `ggplot2`: Creates detailed spatial visualizations.
+-   `leaflet`: Creates detailed interactive data viz
+-   Useful in environmental studies, urban planning, and more.
+
+## The `leaflet` package
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   A powerful and versatile tool for creating interactive maps
+-   Enables users to dynamically explore spatial data
+-   Offers extensive options for custom markers, layers, etc.
+-   Maps: Variety of cartography (providerTiles)
+    -   Points/Markers
+    -   Polygons
+    -   Lines
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+-   Tiles are the cartography loaded from a server
+-   They can of different styles (satellite, terrain, roadmaps)
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3|4"
+#| echo: true
+#| eval: false
+
+## Creating our first map
+# Adding the first layer: the tiles
+leaflet() |>  
+  addTiles()
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+leaflet() |> 
+  addTiles()
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,4|5,6,7"
+#| echo: true
+#| eval: false
+
+## Creating our first map
+# Adding a second layer: a `marker` is a single point in the graph!
+leaflet() |> 
+  addTiles() |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R")
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+leaflet() |> 
+  addTiles() |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R")
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+-   Changing to a lighter version of tile
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,5,6,7|4"
+#| echo: true
+#| eval: false
+
+## Creating our first graph
+# Changing the tile
+leaflet() |> 
+  addProviderTiles("CartoDB") |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R")
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+leaflet() |> 
+  addProviderTiles("CartoDB") |>
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R")
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+-   `CircleMarkers`: adding a different type of marker
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,4,5,6,7|8,9,10,11"
+#| echo: true
+#| eval: false
+
+## Creating our first graph
+# Adding circle markers
+leaflet() |> 
+  addProviderTiles("CartoDB") |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R") |>
+  addCircleMarkers(lng = 174.778, lat = -36.854,
+                   radius = 10,
+                   color = "red",
+                   label = "A geolocation close to R's Birthplace")
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+leaflet() |> 
+  addProviderTiles("CartoDB") |>
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R") |>
+  addCircleMarkers(lng = 174.778, lat = -36.854,
+                   radius = 10,
+                   color = "red",
+                   label = "A geolocation close to R's Birthplace")
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+-   `setView`: setting the default options of the map
+-   `leafletOptions`: choosing the user possibilities
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3|1-11|12,13,14"
+#| echo: true
+#| eval: false
+
+## Creating our first graph
+# Settting some user options
+leaflet(options = leafletOptions(minZoom = 10, dragging = TRUE)) |> 
+  addProviderTiles("CartoDB") |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R") |>
+  addCircleMarkers(lng = 174.778, lat = -36.854,
+                   radius = 10,
+                   color = "red",
+                   label = "A geolocation close to R's Birthplace") |> 
+  setView(lng = 174.8,
+          lat = -36.9,
+          zoom = 8)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+leaflet(options = leafletOptions(minZoom = 10, dragging = TRUE)) |> 
+  addProviderTiles("CartoDB") |> 
+  addMarkers(lng = 174.768,
+             lat = -36.852,
+             popup = "Birthplace of R") |>
+  addCircleMarkers(lng = 174.778, lat = -36.854,
+                   radius = 10,
+                   color = "red",
+                   label = "A geolocation close to R's Birthplace") |> 
+  setView(lng = 174.8,
+          lat = -36.9,
+          zoom = 8)
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+-   Adding data to our map!
+-   Using the `lat` and `long` parameters
+-   Markers, circles, pins's functions all have them
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1-3|4"
+#| echo: true
+#| eval: false
+
+## Loading our data
+# Condition1 1: the data need to have the lat and long columns
+cps_schools <- read_csv('cps_schools_database.csv')
+head(cps_schools, 5)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Loading our data
+# Condition1 1: the data need to have the lat and long columns
+cps_schools <- read_csv('cps_schools_database.csv')
+head(cps_schools, 5)
+```
+:::
+
+## The `leaflet` package {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1-5|6-10"
+#| echo: true
+#| eval: false
+
+
+## Creating our first graph
+# Linking the lat/long columns and adding a label to the circle markers
+cps_schools |> 
+  leaflet() |> 
+  addProviderTiles("CartoDB") |> 
+  addCircleMarkers(lng = ~school_long,
+                   lat = ~school_lat,
+                   radius = 5,
+                   color = "red",
+                   label = ~school_nm)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+cps_schools |> 
+  leaflet() |> 
+  addProviderTiles("CartoDB") |> 
+  addCircleMarkers(lng = ~school_long,
+                   lat = ~school_lat,
+                   radius = 5,
+                   color = "red",
+                   label = ~school_nm)
+```
+:::
+
+# [Lecture recap]{style="color:#FFC61A"}
+
+- leaflet: we can use for creating interactive maps, enhancing spatial data exploration.
+- highly customizable: add tiles, markers, and circle markers, set the view, etc.
+- different features: adding various layers (tiles, markers)
+- light and easy to work with (shorter lines of code)
+
+# [Stay tuned!]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}

@@ -1,0 +1,404 @@
+---
+title: "<span style='color:#FFC61A'> Data Visualization - ggplot2 </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> Making graphs in R (I) </span>"
+format:
+  revealjs:
+    incremental: true
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: true
+    menu: true
+    embed-resources: true
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+## Data we will be using to plot!
+library(gapminder)
+library(tidyverse)
+library(ggthemes)
+library(flextable)
+data(gapminder)
+```
+
+# [Today's agenda]{style="color:#FFC61A"}
+
+-   A theoretical introduction to `ggplot2`
+-   Producing our first graph in R!
+-   The main elements of coding a graph
+-   Customizing our graph
+
+# [About `ggplot2`]{style="color:#FFC61A"}
+
+-   The `ggplot2` package (the grammar of graphs theory)
+    -   Hadley Wickham
+    -   The best option for data viz
+    -   Layer-based mentality (+)
+    - Let's dive in!
+
+# [The three main elements of a Graph]{style="color:#FFC61A"}
+
+1. The `data`
+2. The `aesthetics`
+3. The `geometry`
+4. Each of these elements are added as `layers` in our graph  
+
+## 1st layer: `data` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Data: a table that contains **only** the information we want to see displayed
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3|5,6,7|9"
+#| echo: true
+#| eval: false
+
+## Data we will be using to plot!
+library(gapminder)
+data(gapminder)
+
+## But, let's work with a version smaller of it!
+gapminder_brazil <- gapminder |> 
+  filter(country == 'Brazil')
+
+head(gapminder_brazil, 5)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Data we will be using to plot!
+library(gapminder)
+data(gapminder)
+
+## But, let's work with a version smaller of it!
+gapminder_brazil <- gapminder |> 
+  filter(country == 'Brazil')
+
+head(gapminder_brazil, 5) |> 
+  regulartable()
+```
+:::
+
+## 1st layer: `data`
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Adding the data to `ggplot` function, so it can plot it!
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3"
+#| echo: true
+#| eval: false
+
+## Plotting the first layer of our plot
+gapminder_brazil |> 
+  ggplot()
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the first layer of our plot
+gapminder_brazil |> 
+  ggplot()
+```
+:::
+
+## 2nd layer: `aesthetics` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Mapping **visual aspects** of the graph to **columns** of our data
+-   Way of linking what is visual to our data!
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2|3"
+#| echo: true
+#| eval: false
+
+## Plotting the second layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp))
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the second layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp))
+```
+:::
+
+## 3rd layer: `geometry` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   The geometric shape we want to see the information on
+-   Lines, points, bars, etc.
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3|4"
+#| echo: true
+#| eval: false
+
+## Plotting the third layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the third layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point()
+```
+:::
+
+## 4th layer: `labs` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Labs cover most of the text information
+-   PS: nothing is 'necessary' now!
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,4|5,6,7,8,9"
+#| echo: true
+#| eval: false
+
+## Plotting the fourth layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset')
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the fourth layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset')
+```
+:::
+
+## 5th layer: `theme` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   The **background** theme of the plot
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,4,5,6,7,8,9|10"
+#| echo: true
+#| eval: false
+
+## Plotting the fifth layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset') +
+  theme_light()
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the fifth layer of our plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset') +
+  theme_light()
+```
+:::
+
+## More layers: `scales` & `geom` {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   The **background** theme of the plot
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1,2,3,4,5,6,7,8,9,10|11,12"
+#| echo: true
+#| eval: false
+
+## Plotting the mroe layers for out plot!
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset') +
+  theme_light() +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  geom_line()
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Plotting the mroe layers for out plot!
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset') +
+  theme_light() +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  geom_line()
+```
+:::
+
+## `ggplot2`: before & after 9 lines! {.scrollable}
+
+::: {.column-page layout-ncol="2"}
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 5
+#| fig-height: 4.25
+
+## Initial plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp))
+```
+
+```{r}
+#| echo: false
+#| eval: true
+#| fig-width: 5
+#| fig-height: 4.25
+
+## Final plot
+gapminder_brazil |> 
+  ggplot(aes(x = year, y = lifeExp)) +
+  geom_point() +
+  labs(title = 'Life expectancy evolution in Brazil',
+       subtitle = 'From 1952 to 2007',
+       x = 'Years',
+       y = 'Life expectancy(age)',
+       caption = 'Source: gapminder dataset') +
+  theme_light() +
+  scale_x_continuous(breaks = seq(1952, 2007, by = 5)) +
+  geom_line()
+```
+:::
+
+# [Lecture recap]{style="color:#FFC61A"}
+
+-   `ggplot2` creates graph in a layers mentality
+-   The three main components of a graph are:
+    -   Data
+    -   Aesthetics
+    -   Geometries
+-   More customization = more layers = more lines of code
+
+# [Practice exercises!]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
