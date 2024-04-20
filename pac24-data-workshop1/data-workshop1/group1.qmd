@@ -1,0 +1,70 @@
+---
+title: "Group 1"
+format: html
+editor: source
+---
+
+<img src="images/harris-logo.png" alt="Icon" style="vertical-align:middle;" width="400" height="80"/>
+
+## Team members
+
+-   Marcus Martinez
+-   Raimundo Gana
+-   Fatima Zehra
+-   Thompson D.
+
+## Phase 1: Data Cleaning and Preparation
+
+```{r}
+#| echo: true
+#| eval: false
+
+# General Feedback:
+# - Good use of tidyverse for data manipulation, which is powerful and expressive.
+# - Consistent formatting in code makes it easier to read and maintain.
+# - Consider commenting the script a bit more!
+
+# All good here!
+folder_path = "/Users/faelmassa/Desktop/Project Drac de Fusta/Harris PAC - AvrMai24/Policy Analytics Credential - UChicago Harris/Lectures/Week 3 - L10 - L14/Workshop 2/"
+setwd(folder_path)
+
+# Normally, we can just run in the console the `getwd()` function! It's a one time run!
+getwd()
+
+# All good here!
+library(tidyverse)
+
+# All good here!
+slums <- read.csv("1-wb-slum_population.csv")
+ruralpop <- read_csv("2-wb-rural_population.csv", skip = 4) 
+
+# All good here!
+glimpse(ruralpop)
+colnames(ruralpop)
+
+# Almost all good!
+# Issue: column's name (remember, R don't like empty spaces)
+ruralpop <- ruralpop %>%
+  pivot_longer(cols = "1960":"2023",
+               names_to = "Year",
+               values_to = "Rural Pop (%)")
+
+# All good here!
+ruralpop <- ruralpop[, -4]
+
+# Almost all good!
+# Issue (same from above): column's name (remember, R don't like empty spaces)
+ruralpop_3 <- ruralpop %>%
+  mutate(`Country Code` = str_sub(`Country Code`, 5, 7))
+
+# Same issue!
+ruralpop_final <- ruralpop_3 %>%
+  select(`Country Code`, `Indicator Code`, Year, `Rural Pop (%)`)
+
+# All good here!
+ruralpop_final <- ruralpop_final %>%
+  mutate(Year = as.numeric(Year))
+
+```
+
+

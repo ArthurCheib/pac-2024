@@ -1,0 +1,55 @@
+---
+title: "Group 3"
+format: html
+editor: source
+---
+
+<img src="images/harris-logo.png" alt="Icon" style="vertical-align:middle;" width="400" height="80"/>
+
+## Team members
+
+- Amad Nadeem
+- Peter Beniaris
+- Sarah Zhao
+
+## Phase 1: Data Cleaning and Preparation 
+
+```{r}
+#| echo: true
+#| eval: false
+
+# General Feedback:
+# - The script is very well-structured and looking good!
+
+# All good here!
+library(tidyverse)
+
+# All good here!
+mortality <- read_csv("raw-datasets/5-wb-mortality_rate_under5.csv")
+electricty <- read_csv("raw-datasets/6-wb-access_eletricity.csv", skip = 4)
+
+# All almost good here!
+# Suggestion 1: breaking the lines for readability
+mortality <- mortality %>% select(-country_name)
+
+# Good use of the line breaker here and the : operator
+new_mortality <- mortality %>%
+  pivot_longer(
+    cols = yr_1960:yr_2023,
+    names_to = "Year",
+    values_to = "Mortality"
+  )
+
+new_electricity <- electricty %>%
+  pivot_longer(
+    cols = `1960`:`2023`,
+    names_to = "Year",
+    values_to = "Percent"
+  )
+
+# All good here!
+write_csv(new_mortality, "clean-datasets/clean_mortality.csv")
+write_csv(new_electricity, "clean-datasets/clean_electricity.csv")
+```
+
+

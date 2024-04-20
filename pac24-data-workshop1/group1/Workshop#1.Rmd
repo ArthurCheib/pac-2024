@@ -1,0 +1,55 @@
+---
+title: 'Workshop #1'
+output: html_document
+date: "2024-04-20"
+---
+
+#Dataset 1: 1
+
+##Importing/Setup
+```{r}
+#Set up libraries
+library(readr)
+library(tidyverse)
+X1_wb_slum_population <- read_csv("1-wb-slum_population.csv")
+
+#For the country, just use country code
+#For indicator use indicator code
+#Get rid of other two to save processing power
+
+
+#Use Pivot longer to combined yr_1960:yr_2005
+
+X1_wb_slum_population_longer <- X1_wb_slum_population %>%
+  pivot_longer(cols = `yr_1960`:`yr_2023`, 
+               names_to = "Year", 
+               values_to = "Slum Population (%)")
+
+X1_wb_slum_population_longer_2 <- mutate(X1_wb_slum_population_longer, Year = as.numeric(str_sub(Year,4,7)))
+
+#Final format
+
+Slum_Population <- select(X1_wb_slum_population_longer_2, 'Country Code', 'Indicator Code', Year, 'Slum Population (%)')
+
+write_csv(Slum_Population, "slum_population_group1.csv") 
+```
+
+
+
+
+
+
+
+
+
+### Do not use below Raimundo has the code for Dataset 2
+
+#Dataset 2
+```{r}
+X2_wb_rural_population <- read_csv("2-wb-rural_population.csv")
+
+#Get rid of first three rows
+#Reformat the years into the right format (character? just first 4)
+#Set row 4, now row 1, as the new columns
+```
+

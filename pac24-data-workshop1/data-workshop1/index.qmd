@@ -1,11 +1,19 @@
 ---
-title: "data-workshop1"
+title: "Policy Analytics Credential"
+format: html
+editor: source
 ---
 
-This is a Quarto website.
+<img src="images/harris-logo.png" alt="Icon" style="vertical-align:middle;" width="400" height="80"/>
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
+## What PAC is about?
 
-```{r}
-1 + 1
-```
+Diving into a dataset and navigating the entire data analysis process can be a daunting task, particularly for newcomers to this field. The **Policy Analytics Credential Program** is designed by UChicago faculty and our experienced graduate instructors who serve as Teaching Fellows for UChicago master-level students. It starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.
+
+### Features of the Program
+
+-   Gain essential and practical skills in R programming and statistics Synchronous Policy
+-   Insights & Data Exploration Workshops with UChicago Harris graduate instructors
+-   Synchronous weekly teaching sessions
+-   Join the UChicago Harris R user community
+-   Shareable certification of completion to showcase your credential

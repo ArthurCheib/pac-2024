@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Policy Analytics Credential</title>
+<title>Policy Analytics Credential - Group 3</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +64,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./about_dw.html" rel="next">
+<link href="./group4.html" rel="next">
+<link href="./group2.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Policy Analytics Credential</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./group1.html">Data Workshop 1</a></li><li class="breadcrumb-item"><a href="./group3.html">Group 3</a></li></ol></nav>
         <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -108,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Policy Analytics Credential</span></a>
   </div>
 </li>
@@ -141,7 +176,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./group3.html" class="sidebar-item-text sidebar-link">
+  <a href="./group3.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Group 3</span></a>
   </div>
 </li>
@@ -169,19 +204,17 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-pac-is-about" id="toc-what-pac-is-about" class="nav-link active" data-scroll-target="#what-pac-is-about">What PAC is about?</a>
-  <ul class="collapse">
-  <li><a href="#features-of-the-program" id="toc-features-of-the-program" class="nav-link" data-scroll-target="#features-of-the-program">Features of the Program</a></li>
-  </ul></li>
+  <li><a href="#team-members" id="toc-team-members" class="nav-link active" data-scroll-target="#team-members">Team members</a></li>
+  <li><a href="#phase-1-data-cleaning-and-preparation" id="toc-phase-1-data-cleaning-and-preparation" class="nav-link" data-scroll-target="#phase-1-data-cleaning-and-preparation">Phase 1: Data Cleaning and Preparation</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./group1.html">Data Workshop 1</a></li><li class="breadcrumb-item"><a href="./group3.html">Group 3</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Policy Analytics Credential</h1>
+<h1 class="title">Group 3</h1>
 </div>
 
 
@@ -199,21 +232,52 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><img src="images/harris-logo.png" alt="Icon" style="vertical-align:middle;" width="400" height="80"></p>
-<section id="what-pac-is-about" class="level2">
-<h2 class="anchored" data-anchor-id="what-pac-is-about">What PAC is about?</h2>
-<p>Diving into a dataset and navigating the entire data analysis process can be a daunting task, particularly for newcomers to this field. The <strong>Policy Analytics Credential Program</strong> is designed by UChicago faculty and our experienced graduate instructors who serve as Teaching Fellows for UChicago master-level students. It starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.</p>
-<section id="features-of-the-program" class="level3">
-<h3 class="anchored" data-anchor-id="features-of-the-program">Features of the Program</h3>
+<section id="team-members" class="level2">
+<h2 class="anchored" data-anchor-id="team-members">Team members</h2>
 <ul>
-<li>Gain essential and practical skills in R programming and statistics Synchronous Policy</li>
-<li>Insights &amp; Data Exploration Workshops with UChicago Harris graduate instructors</li>
-<li>Synchronous weekly teaching sessions</li>
-<li>Join the UChicago Harris R user community</li>
-<li>Shareable certification of completion to showcase your credential</li>
+<li>Amad Nadeem</li>
+<li>Peter Beniaris</li>
+<li>Sarah Zhao</li>
 </ul>
-
-
 </section>
+<section id="phase-1-data-cleaning-and-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="phase-1-data-cleaning-and-preparation">Phase 1: Data Cleaning and Preparation</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># General Feedback:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># - The script is very well-structured and looking good!</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># All good here!</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># All good here!</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>mortality <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"raw-datasets/5-wb-mortality_rate_under5.csv"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>electricty <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"raw-datasets/6-wb-access_eletricity.csv"</span>, <span class="at">skip =</span> <span class="dv">4</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># All almost good here!</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Suggestion 1: breaking the lines for readability</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>mortality <span class="ot">&lt;-</span> mortality <span class="sc">%&gt;%</span> <span class="fu">select</span>(<span class="sc">-</span>country_name)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Good use of the line breaker here and the : operator</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>new_mortality <span class="ot">&lt;-</span> mortality <span class="sc">%&gt;%</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> yr_1960<span class="sc">:</span>yr_2023,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Mortality"</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>new_electricity <span class="ot">&lt;-</span> electricty <span class="sc">%&gt;%</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">cols =</span> <span class="st">`</span><span class="at">1960</span><span class="st">`</span><span class="sc">:</span><span class="st">`</span><span class="at">2023</span><span class="st">`</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Year"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Percent"</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="co"># All good here!</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(new_mortality, <span class="st">"clean-datasets/clean_mortality.csv"</span>)</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(new_electricity, <span class="st">"clean-datasets/clean_electricity.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
 </section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
@@ -628,10 +692,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
+      <a href="./group2.html" class="pagination-link" aria-label="Group 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Group 2</span>
+      </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./about_dw.html" class="pagination-link" aria-label="Data Exploration Workshop">
-        <span class="nav-page-text">Data Exploration Workshop</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./group4.html" class="pagination-link" aria-label="Group 4">
+        <span class="nav-page-text">Group 4</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

@@ -1,0 +1,19 @@
+---
+title: "Data Exploration Workshop"
+format: html
+editor: source
+---
+
+<img src="images/harris-logo.png" alt="Icon" style="vertical-align:middle;" width="400" height="80"/>
+
+## What are the Data Exploration Workshops?
+
+The Data Workshop was designed to equip students with practical skills in handling real-world data, emphasizing teamwork, application of course concepts, and hands-on experience with data analysis tools in R. This workshop will guide students through a data analysis process from data cleaning to visualization, fostering both technical skills and collaborative problem-solving.
+
+<img src="images/dw1.jpeg" alt="Icon" style="vertical-align:middle;" width="374" height="232"/>
+
+### Structure of the Workshop
+
+-   Phase 1: Data Cleaning and Preparation (group phase)
+-   Phase 2: Data Integration and Initial Analysis (instructor review)
+-   Phase 3: Data Visualization and Presentation (group phase)

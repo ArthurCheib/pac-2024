@@ -2,12 +2,25 @@ project:
   type: website
 
 website:
-  title: "data-workshop1"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+  title: 'Policy Analytics Credential'
+  back-to-top-navigation: true
+  page-navigation: true
+  page-footer: 'Copyright 2024, PAC UChicago'
+  sidebar: 
+    background: info
+    type: 'dark'
+    search: true
+    style: 'docked'
+    contents:
+      - index.qmd
+      - about_dw.qmd
+      - section: 'Data Workshop 1'
+        contents:
+          - group1.qmd
+          - group2.qmd
+          - group3.qmd
+          - group4.qmd
+          - final_work.qmd
 
 format:
   html:
