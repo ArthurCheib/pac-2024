@@ -1,0 +1,310 @@
+---
+title: "<span style='color:#FFC61A'> Loops in R (I) </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> The `for` loop </span>"
+format:
+  revealjs:
+    incremental: true
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: true
+    menu: true
+    embed-resources: true
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+## Data we will be using to plot!
+library(gapminder)
+library(tidyverse)
+library(ggthemes)
+data(gapminder)
+```
+
+# [Today's agenda]{style="color:#FFC61A"}
+
+- We will go through `for` loops
+  - Basic syntax
+  - `For` loops main parts
+  - Examples of application
+
+# [`For` loops in R]{style="color:#FFC61A"}
+
+-   `for` loops iterate over sequences, executing code for each element.
+-   Ideal for automating repetitive tasks across data structures
+-   Facilitates batch data processing!
+-   Used when iteration count is predetermined.
+-   Make sure you keep your `loops` simple!
+
+## The `for` loop - case I {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   What we need to write a for loop?
+    -   **A sequence:** the set of values to iterate over
+    -   **A loop variable:** a placeholder that takes on each value in the sequence as the loop iterates
+    -   **A body of code:** the operations or tasks to perform on each iteration
+:::
+
+## The `for` loop - case I {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-6|7-9"
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# `name` in the line below is our loop variable (it can be named anything)
+for (name in names) {
+  ## Task to perform on each iteration
+  print(name)
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+## name = our loop variable (it can be named anything of our choice)
+for (name in names) {
+  ## Task to perform on each iteration
+  print(name)
+}
+```
+:::
+
+## The `for` loop - case II
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4,5|6-12"
+
+# Define a sequence of numbers
+numbers <- 1:5
+
+# Use a for loop to iterate over the sequence
+for (num in numbers) {
+  # What to do in each loop
+  print(num)
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a sequence of numbers
+numbers <- 1:5
+
+# Use a for loop to iterate over the sequence
+for (num in numbers) {
+  # What to do in each loop
+  print(num)
+}
+```
+:::
+
+## The `for` loop - case III
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4,5|6-12"
+
+# Define a sequence of numbers
+numbers <- 1:5
+
+# Use a for loop to iterate over the sequence
+for (num in numbers) {
+  # Check if the number is even
+  if (num %% 2 == 0) {
+    # What to do if the condition is TRUE
+    print(paste(num, "is even"))
+  } else {
+    # What to do if the condition is FALSE
+    print(paste(num, "is odd"))
+  }
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a sequence of numbers
+numbers <- 1:5
+
+# Use a for loop to iterate over the sequence
+for (num in numbers) {
+  # Check if the number is even
+  if (num %% 2 == 0) {
+    print(paste(num, "is even"))
+  } else {
+    print(paste(num, "is odd"))
+  }
+}
+```
+:::
+
+## The `for` loop - case IV {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Instead of having the loop variable assuming the value of the vector or any other group of values itself, we can create a sequence and have it iterating over it.
+-   Provided that the sequence contains precisely the number of iterations we desire
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-6|7-9"
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# i = an universal placeholder used in for loops
+for (i in seq_along(names)) {
+  ## Task to perform on each iteration
+  print(names[i])
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# name = our loop variable (it can be named anything of our choice)
+for (i in seq_along(names)) {
+  ## Task to perform on each iteration
+  print(names[i])
+}
+```
+:::
+
+## Did you notice they are the same? {.scrollable}
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-6|7-9|"
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# `name` in the line below is our loop variable (it can be named anything)
+for (name in names) {
+  ## Task to perform on each iteration
+  print(name)
+}
+```
+:::
+
+::: {style="margin-top: 25px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-6|7-9|"
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# i = an universal placeholder used in for loops
+for (i in seq_along(names)) {
+  ## Task to perform on each iteration
+  print(names[i])
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a sequence of text
+names <- c('Arthur', 'Jose', 'Rohen', 'Shilin', 'Zoe', 'Austin')
+
+# Use a for loop to iterate over the sequence
+# name = our loop variable (it can be named anything of our choice)
+for (i in seq_along(names)) {
+  ## Task to perform on each iteration
+  print(names[i])
+}
+```
+:::
+
+
+# [Lecture recap]{style="color:#FFC61A"}
+
+- `For` loops needs
+  - A sequence
+  - A loop variable
+  - A body of code
+- The loop variable can either incorporate each element of a sequence or we can play with a numeric group that equals the length of our sequence.
+
+# [Stay tuned!]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}

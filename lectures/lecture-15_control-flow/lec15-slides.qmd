@@ -1,0 +1,281 @@
+---
+title: "<span style='color:#FFC61A'> Control Flow Statements </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> The `if` statement </span>"
+format:
+  revealjs:
+    incremental: true
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: true
+    menu: true
+    embed-resources: true
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+## Data we will be using to plot!
+library(gapminder)
+library(tidyverse)
+library(ggthemes)
+library(flextable)
+data(gapminder)
+```
+
+# [Today's agenda]{style="color:#FFC61A"}
+
+- Introduction to the concept of control flow
+  - The `if` statement
+  - Reminder of comparisons operators
+  - The `if-else` statement
+  - The `if_else()` function
+
+# [Control Flow]{style="color:#FFC61A"}
+
+- Conditional execution allows programs to perform different actions based on whether a condition is `TRUE` or `FALSE.`
+- The most basic version of control flow is known as the `if` statement.
+- Conditions include logical tests (comparison operators).
+- Later: `else`, the extended version of the if statement.
+
+## The `if` statement
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   Evaluate a condition and what to do if it evaluates to `TRUE`
+-   It will control not only a single action, but a chunk of code
+-   Essential for decision-making in programming.
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1|3,4|6,7|8,9,10"
+#| echo: true
+#| eval: false
+
+## Basic syntax of an if-statement
+
+# Define a variable that equals a numeric value
+number <- 5
+
+# Condition being evaluated: check if the number is greater than 0
+if (number > 0) {
+  # This line executes if the condition is TRUE
+  print("The number is positive.")
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+## Basic syntax of an if-statement
+
+# Define a variable with a numeric value
+number <- 5
+
+# Condition being evaluated: check if the number is greater than 0
+if (number > 0) {
+  # This line executes if the condition is TRUE
+  print("The number is positive.")
+}
+```
+:::
+
+## The `else` statement
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   The `else` statement extends the control flow of our code for cases when the condition evaluates to `FALSE.`
+:::
+
+::: fragment
+```{r}
+#| code-line-numbers: "1|3,4|6-9|10-13"
+#| echo: true
+#| eval: false
+
+## Basic syntax of an if-else-statement
+
+# Define a variable with a numeric value
+number <- -10
+
+# Condition being evaluated: check if the number is greater than 0
+if (number > 0) {
+  # This line executes if the condition is TRUE
+  print("The number is positive.")
+} else {
+  # This line executes if the condition is FALSE
+  print("The number is not positive.")
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a variable with a numeric value
+number <- -10
+
+# Condition being evaluated: check if the number is greater than 0
+if (number > 0) {
+  # This line executes if the condition is TRUE
+  print("The number is positive.")
+} else {
+  # This line executes if the condition is FALSE
+  print("The number is not positive.")
+}
+```
+:::
+
+## The `if_else` function {.scrollable}
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+- So, what about the `if_else()` function?
+- Whereas the `if-else` statement is a control flow mechanism, the `if_else()` function is designed for working within data manipulation, not whole chunks of code!
+- It's an extremely powerful tool, though!
+- Ideal for conditional operations within data frames or vectors.
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4,5|"
+
+# Define a vector of numeric values
+values <- c(-3:3)
+
+# Use if_else to check values
+result <- if_else(values <= 0, 'Smaller', 'Not smaller')
+
+# Print the result
+print(result)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Define a vector of numeric values
+values <- c(-3:3)
+
+# Use if_else to check values, replacing negatives with NA
+result <- if_else(values <= 0, 'Smaller', 'Not smaller')
+
+# Print the result
+print(result)
+```
+:::
+
+
+## The `if_else` function
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1-2|4-5"
+
+# Filter gapminder data for the year 2007
+data_2007 <- gapminder |> filter(year == 2007)
+
+# Let's see what we have so far
+head(data_2007)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Filter gapminder data for the year 2007
+data_2007 <- gapminder |> filter(year == 2007)
+
+# Let's see what we have so far
+head(data_2007) |> 
+  regulartable()
+```
+:::
+
+
+## The `if_else` function
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1-3|5,6"
+
+# Use if_else within mutate to categorize life expectancy
+categorized_life_exp <- data_2007 |> 
+  mutate(life_exp_category = if_else(lifeExp > 65, "High", "Low"))
+
+# View the first few rows of the modified dataframe
+head(categorized_life_exp)
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+
+# Use if_else within mutate to categorize life expectancy
+categorized_life_exp <- data_2007 |> 
+  mutate(life_exp_category = if_else(lifeExp > 65, "High", "Low"))
+
+# View the first few rows of the modified dataframe
+head(categorized_life_exp) |> 
+  regulartable()
+```
+:::
+
+# [Lecture recap]{style="color:#FFC61A"}
+
+- The `if` statement controls the flow of the code.
+- It also dictates what to do `if` the condition evaluates to `TRUE.`
+- The subsequent `else` statement indicates the code flow when the condition evaluates to `FALSE.`
+- The `if_else()` function is something different, very useful when working with data frames and vectors, not with the code's control flow.
+
+# [Practice exercises!]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}

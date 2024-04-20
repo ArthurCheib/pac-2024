@@ -1,0 +1,154 @@
+---
+title: "<span style='color:#FFC61A'> Loops in R </span>"
+title-slide-attributes: 
+  data-background-image: images/background-harris.jpg
+subtitle: "<span style='color:#FFFFFF'> For Loops - cookbook! </span>"
+format:
+  revealjs:
+    incremental: true
+    footer: "<span style='color:#FFFFFF'> Policy Analytics Credential </span>"
+    logo: images/harris_logo.png
+    progress: true
+    menu: true
+    code-line-numbers: true
+    embed-resources: true
+editor: source
+---
+
+```{r}
+#| echo: false
+#| eval: true
+#| warning: false
+#| message: false
+
+## Data we will be using to plot!
+library(gapminder)
+library(tidyverse)
+library(ggthemes)
+data(gapminder)
+```
+
+# [Today's agenda]{style="color:#FFC61A"}
+
+# [More on `for` loops in R]{style="color:#FFC61A"}
+
+-   I understand what the for loop is doing...
+-   ... but how to write one?
+
+## `for` loop - Cookbook
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+-   **Step 1 - Identify the Sequence:** Determine the sequence or set of elements you want to iterate over.
+-   **Step 2 - Define the Loop Variable:** Choose a variable name that will represent each element of the sequence during the loop's iterations.
+-   **Step 3 - Write the Loop Structure:** Make sure you don't mistakes on the syntax
+-   **Steep 4 - Test the Loop:** Run the loop with a simple, known sequence to ensure it behaves as expected.
+:::
+
+## `for` loop - identify the sequence
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4,5,6|8-11"
+
+# Sequence of numbers of a vector
+numbers <- c(1,2,3,4,5)
+
+## Sequence of rows in a dataframe
+# "For every row in my dataframe..."
+gapminder$country
+
+# Sequence of elements inside a list
+list(element1 = c(1,2,3),
+     element2 = c('one', 'two', 'three'),
+     element3 = gapminder$country)
+```
+:::
+
+## `for` loop - define the loop variable
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-9"
+
+# Sequence of numbers of a vector
+numbers <- c(1,2,3,4,5)
+
+# As for now, don't worry about the task
+# Let's focus on the loop variable
+# What we need to be the 'thing' changing every iteration, each number?
+for (number in numbers) {
+
+}
+```
+:::
+
+## `for` loop - write the loop structure
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-9"
+
+# Sequence of numbers of a vector
+numbers <- c(1,2,3,4,5)
+
+# Now, let's focus on the task
+## What do you want to accomplish?
+# Squared each number and see the result
+print(number ** 2)
+```
+:::
+
+## `for` loop - put the elements together
+
+::: fragment
+```{r}
+#| echo: true
+#| eval: false
+#| code-line-numbers: "1,2|4-8"
+
+# (1) The sequence
+numbers <- c(1,2,3,4,5)
+
+# (2) The loop variable
+# (3) The loop structure/task
+for (number in numbers) {
+  print(number ** 2)
+}
+```
+:::
+
+::: {style="margin-top: 10px;"}
+:::
+
+::: fragment
+```{r}
+#| echo: false
+#| eval: true
+# (1) The sequence
+numbers <- c(1,2,3,4,5)
+
+# (2) The loop variable
+# (3) The loop structure/task
+for (number in numbers) {
+  print(number ** 2)
+}
+```
+:::
+
+# [Lecture recap]{style="color:#FFC61A"}
+
+-   Step 1 - Identify the Sequence
+-   Step 2 - Define the Loop Variable
+-   Step 3 - Write the Loop Structure
+-   Step 4 - Test the Loop
+
+# [Stay tuned!]{style="color:#FFC61A"} {background-image="images/background-harris.jpg"}
