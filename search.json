@@ -1,16 +1,121 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "objectID": "group4.html#team-members",
+    "href": "group4.html#team-members",
+    "title": "Group 4",
+    "section": "Team members",
+    "text": "Team members\n\nJulia Hetzel\nLuis Emilio\nNibin Zheng\nRachel Ruff",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 4"
+    ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "data-workshop1",
-    "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "objectID": "group4.html#phase-1-data-cleaning-and-preparation",
+    "href": "group4.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 4",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is looking good in loading and processing the data!\n# - Good naming of the variables!\n\n# All good here!\nlibrary(gapminder)\nlibrary(tidyverse)\n\n# All good here!\noptions(stringsAsFactors = FALSE) \noptions(scipen = 999999)\n\n# All good here!\nfolder_path = \"C:/Users/jhetzel/Desktop/PAC/Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\ngdp &lt;- read.csv(\"7-wb-gdp_per_capita.csv\")\ngov_expenditure &lt;- read.csv(\"8-wb-gov_expenditure_education.csv\", skip = 3)\n\n# All good here!\ncleangdp &lt;- gdp %&gt;%\n  select(Country.Name, Country.Code, c(yr_1960 : yr_2005)) %&gt;%\n  pivot_longer(cols = c(yr_1960 : yr_2005),\n               names_to = \"years\",\n               values_to = \"total_gdp\", \n               values_drop_na = TRUE) \n\n# All good here!\nnew_names &lt;- as.character(gov_expenditure[1, ])\ngov_expenditure &lt;- gov_expenditure[-1, ]\ncolnames(gov_expenditure) &lt;- new_names\n\n# All good here!\nclean_gov_expenditure &lt;- gov_expenditure %&gt;%\n  select('Country Code', c('1960' : '2006')) %&gt;%\n  pivot_longer(cols = c('1960' : '2006'),\n               names_to = \"years\",\n               values_to = \"expenditure\", \n               values_drop_na = TRUE)",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 4"
+    ]
+  },
+  {
+    "objectID": "group3.html#team-members",
+    "href": "group3.html#team-members",
+    "title": "Group 3",
+    "section": "Team members",
+    "text": "Team members\n\nAmad Nadeem\nPeter Beniaris\nSarah Zhao",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 3"
+    ]
+  },
+  {
+    "objectID": "group3.html#phase-1-data-cleaning-and-preparation",
+    "href": "group3.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 3",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is very well-structured and looking good!\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nmortality &lt;- read_csv(\"raw-datasets/5-wb-mortality_rate_under5.csv\")\nelectricty &lt;- read_csv(\"raw-datasets/6-wb-access_eletricity.csv\", skip = 4)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nmortality &lt;- mortality %&gt;% select(-country_name)\n\n# Good use of the line breaker here and the : operator\nnew_mortality &lt;- mortality %&gt;%\n  pivot_longer(\n    cols = yr_1960:yr_2023,\n    names_to = \"Year\",\n    values_to = \"Mortality\"\n  )\n\nnew_electricity &lt;- electricty %&gt;%\n  pivot_longer(\n    cols = `1960`:`2023`,\n    names_to = \"Year\",\n    values_to = \"Percent\"\n  )\n\n# All good here!\nwrite_csv(new_mortality, \"clean-datasets/clean_mortality.csv\")\nwrite_csv(new_electricity, \"clean-datasets/clean_electricity.csv\")",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 3"
+    ]
+  },
+  {
+    "objectID": "group2.html#team-members",
+    "href": "group2.html#team-members",
+    "title": "Group 2",
+    "section": "Team members",
+    "text": "Team members\n\nAlece Stancin\nCatherine Arevalo\nRachel Blume",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 2"
+    ]
+  },
+  {
+    "objectID": "group2.html#phase-1-data-cleaning-and-preparation",
+    "href": "group2.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 2",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is well-structured and shows a good grasp of data manipulation in R.\n# - Make sure to use comments to explain why each step!\n# - Make more use of the pipe operator to do more things in a sequence\n\n# All good here! (good start!)\nlibrary(tidyverse)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here! Good practice!\nfolder_path &lt;- \"C:/Users/alece/OneDrive/Documents/PAC/Data Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\nincome &lt;- read_csv(\"income.csv\", skip = 4, col_names = TRUE)\npoverty &lt;- read_csv(\"poverty.csv\")\n\n# All good here!\nglimpse(income)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\n# Suggestion 2: keep the arguments separate by empty spaces\npoverty_longer &lt;- poverty %&gt;%\n  pivot_longer(cols=c(yr_1960:yr_2023), names_to= \"Year\", values_to=\"measurement\")\n\n# All good here!\nglimpse(poverty)\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;%\n  mutate(Year = str_remove(Year, \"yr_\"))\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  select(-\"Indicator Name\")\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  mutate(Year = as.numeric(Year))\n\nglimpse(poverty_longer)\nglimpse(income)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nincome &lt;- income %&gt;% mutate(`Country Code` = str_remove(`Country Code`, \"ISO_\"))\nincome &lt;- income %&gt;% select(-\"...68\")\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nincome_longer &lt;- income %&gt;% pivot_longer(cols=c(`1960`:`2023`), names_to = \"Year\", values_to= \"measurement\")\n\nincome_longer &lt;- income_longer %&gt;% select(-\"Indicator Name\")\n\nincome_longer &lt;- income_longer %&gt;% mutate(Year = as.numeric(Year))\n\n# Writing cleaned and transformed data to CSV files, crucial for saving work and enabling further analysis.\nwrite.csv(income_longer, \"income_clean.csv\")\nwrite.csv(poverty_longer, \"poverty_clean.csv\")",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 2"
+    ]
+  },
+  {
+    "objectID": "final_work.html#phase-3-data-visualization-and-presentation-group-phase",
+    "href": "final_work.html#phase-3-data-visualization-and-presentation-group-phase",
+    "title": "Visualizations",
+    "section": "Phase 3: Data Visualization and Presentation (group phase)",
+    "text": "Phase 3: Data Visualization and Presentation (group phase)",
+    "crumbs": [
+      "Data Workshop 1",
+      "Visualizations"
+    ]
+  },
+  {
+    "objectID": "index.html#what-pac-is-about",
+    "href": "index.html#what-pac-is-about",
+    "title": "Policy Analytics Credential",
+    "section": "What PAC is about?",
+    "text": "What PAC is about?\nDiving into a dataset and navigating the entire data analysis process can be a daunting task, particularly for newcomers to this field. The Policy Analytics Credential Program is designed by UChicago faculty and our experienced graduate instructors who serve as Teaching Fellows for UChicago master-level students. It starts at the beginner-friendly foundational level and equips you with a practical skillset in policy analysis using the UChicago approach within 9 weeks.\n\nFeatures of the Program\n\nGain essential and practical skills in R programming and statistics Synchronous Policy\nInsights & Data Exploration Workshops with UChicago Harris graduate instructors\nSynchronous weekly teaching sessions\nJoin the UChicago Harris R user community\nShareable certification of completion to showcase your credential",
+    "crumbs": [
+      "Policy Analytics Credential"
+    ]
+  },
+  {
+    "objectID": "about_dw.html#what-are-the-data-exploration-workshops",
+    "href": "about_dw.html#what-are-the-data-exploration-workshops",
+    "title": "Data Exploration Workshop",
+    "section": "What are the Data Exploration Workshops?",
+    "text": "What are the Data Exploration Workshops?\nThe Data Workshop was designed to equip students with practical skills in handling real-world data, emphasizing teamwork, application of course concepts, and hands-on experience with data analysis tools in R. This workshop will guide students through a data analysis process from data cleaning to visualization, fostering both technical skills and collaborative problem-solving.\n\n\nStructure of the Workshop\n\nPhase 1: Data Cleaning and Preparation (group phase)\nPhase 2: Data Integration and Initial Analysis (instructor review)\nPhase 3: Data Visualization and Presentation (group phase)",
+    "crumbs": [
+      "Data Exploration Workshop"
+    ]
+  },
+  {
+    "objectID": "group1.html#team-members",
+    "href": "group1.html#team-members",
+    "title": "Group 1",
+    "section": "Team members",
+    "text": "Team members\n\nMarcus Martinez\nRaimundo Gana\nFatima Zehra",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 1"
+    ]
+  },
+  {
+    "objectID": "group1.html#phase-1-data-cleaning-and-preparation",
+    "href": "group1.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 1",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - Good use of tidyverse for data manipulation, which is powerful and expressive.\n# - Consistent formatting in code makes it easier to read and maintain.\n# - Consider commenting on each step of the script to explain why each operation is done, especially for beginners.\n# - Introducing error checks (like checking for file existence before reading) could make the script more robust.\n\n# All good here!\nfolder_path = \"/Users/faelmassa/Desktop/Project Drac de Fusta/Harris PAC - AvrMai24/Policy Analytics Credential - UChicago Harris/Lectures/Week 3 - L10 - L14/Workshop 2/\"\nsetwd(folder_path)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nslums &lt;- read.csv(\"1-wb-slum_population.csv\")\nruralpop &lt;- read_csv(\"2-wb-rural_population.csv\", skip = 4) \n\n# All good here!\nglimpse(ruralpop)\ncolnames(ruralpop)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nruralpop &lt;- ruralpop %&gt;%\n  pivot_longer(cols = \"1960\":\"2023\",\n               names_to = \"Year\",\n               values_to = \"Rural Pop (%)\")\n\n# All good here!\nruralpop &lt;- ruralpop[, -4]\n\n# Almost all good!\n# Issue (same from above): column's name (remember, R don't like empty spaces)\nruralpop_3 &lt;- ruralpop %&gt;%\n  mutate(`Country Code` = str_sub(`Country Code`, 5, 7))\n\n# Same issue!\nruralpop_final &lt;- ruralpop_3 %&gt;%\n  select(`Country Code`, `Indicator Code`, Year, `Rural Pop (%)`)\n\n# All good here!\nruralpop_final &lt;- ruralpop_final %&gt;%\n  mutate(Year = as.numeric(Year))",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group 1"
+    ]
   }
 ]
