@@ -1,79 +1,101 @@
 [
   {
-    "objectID": "group4.html#team-members",
-    "href": "group4.html#team-members",
-    "title": "Group 4",
-    "section": "Team members",
-    "text": "Team members\n\nJulia Hetzel\nLuis Emilio\nNibin Zheng\nRachel Ruff",
+    "objectID": "dw2/instructions-dw2.html",
+    "href": "dw2/instructions-dw2.html",
+    "title": "DW2 - Instructions",
+    "section": "",
+    "text": "The Data Workshop #2 (DW2) is designed to advance participants’ skills in data analysis by tackling real-world datasets, emphasizing geographic analysis and data visualization using R. The workshop provides a comprehensive approach, from data wrangling to mapping, enhancing both technical skills and geographic data interpretation.\n\n\n\nPhase 1: Data Wrangling & Analysis of Crime Trends - Task 1: Analyze ongoing crime trends to provide insights for the City Mayor. - Generate Overall Crime Baseline: Calculate total crimes per year and create a line plot to visualize trends. - Type of Crime Analysis: Identify the most prevalent crimes and visualize the types. - Seasonal Crime Fluctuations: Analyze crime patterns by season and visualize the data. - Geographic Crime Distribution: Summarize and visualize crime data by geographic categories (e.g., census tracts). - Temporal Crime Analysis: Identify patterns in crime occurrences by time and day of the week. - Demographic Analysis: If available, summarize demographic data of individuals involved in crimes.\nPhase 2: Affordable Housing (Fast Task) - Task 2: Examine the intersection of crime and affordable housing. - Affordable Housing Locations: Identify and validate the number of affordable housing locations. - Housing Units Analysis: Determine the total and share of affordable housing units. - Geographic Distribution: Visualize and summarize the distribution of affordable housing.\nPhase 3: Mapping Crime, Affordable Housing & Income - Task 3: Visualize the spatial relationship between crime, affordable housing, and income. - Load Data: Use leaflet and shapefiles to map city tracts and crime locations. - Crime Mapping: Create maps showing crime locations, filtered by year and crime type. - Affordable Housing Visualization: Add affordable housing data to the maps. - Income Distribution Mapping: Visualize income distribution alongside crime and housing data. - Enhanced Analysis: Experiment with color-coding crime data by season or type to uncover patterns.\nPhase 4: Joining Crime with Tracts - Task 4: Integrate crime data with geographic tracts to find crime hotspots. - Crime Grouping: Group crime data by geographic categories (e.g., census tracts) and summarize. - Identify Active Tracts: List the most active census tracts for crimes. - Data Integration: Merge crime, affordable housing, and geographic data to create a comprehensive dataset.\n\n\n\n\nCrime Data: Includes information on crime type, location (longitude, latitude), and geographic categories.\nAffordable Housing Data: Contains location and housing unit information.\nCity Census Tract Data: Shapefile with housing unit information.\n\n\n\n\n\nCities Covered: Austin, TX; Chicago, IL; Washington, DC; Los Angeles, CA; New York City, NY; Philadelphia, PA; San Diego, CA.",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 4"
+      "Data Workshop 2",
+      "DW2 - Instructions"
     ]
   },
   {
-    "objectID": "group4.html#phase-1-data-cleaning-and-preparation",
-    "href": "group4.html#phase-1-data-cleaning-and-preparation",
-    "title": "Group 4",
-    "section": "Phase 1: Data Cleaning and Preparation",
-    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is looking good in loading and processing the data!\n# - Good naming of the variables!\n\n# All good here!\nlibrary(gapminder)\nlibrary(tidyverse)\n\n# All good here!\noptions(stringsAsFactors = FALSE) \noptions(scipen = 999999)\n\n# All good here!\nfolder_path = \"C:/Users/jhetzel/Desktop/PAC/Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\ngdp &lt;- read.csv(\"7-wb-gdp_per_capita.csv\")\ngov_expenditure &lt;- read.csv(\"8-wb-gov_expenditure_education.csv\", skip = 3)\n\n# All good here!\ncleangdp &lt;- gdp %&gt;%\n  select(Country.Name, Country.Code, c(yr_1960 : yr_2005)) %&gt;%\n  pivot_longer(cols = c(yr_1960 : yr_2005),\n               names_to = \"years\",\n               values_to = \"total_gdp\", \n               values_drop_na = TRUE) \n\n# All good here!\nnew_names &lt;- as.character(gov_expenditure[1, ])\ngov_expenditure &lt;- gov_expenditure[-1, ]\ncolnames(gov_expenditure) &lt;- new_names\n\n# All good here!\nclean_gov_expenditure &lt;- gov_expenditure %&gt;%\n  select('Country Code', c('1960' : '2006')) %&gt;%\n  pivot_longer(cols = c('1960' : '2006'),\n               names_to = \"years\",\n               values_to = \"expenditure\", \n               values_drop_na = TRUE)",
+    "objectID": "dw2/instructions-dw2.html#data-workshop-2---pac-2024",
+    "href": "dw2/instructions-dw2.html#data-workshop-2---pac-2024",
+    "title": "DW2 - Instructions",
+    "section": "",
+    "text": "The Data Workshop #2 (DW2) is designed to advance participants’ skills in data analysis by tackling real-world datasets, emphasizing geographic analysis and data visualization using R. The workshop provides a comprehensive approach, from data wrangling to mapping, enhancing both technical skills and geographic data interpretation.\n\n\n\nPhase 1: Data Wrangling & Analysis of Crime Trends - Task 1: Analyze ongoing crime trends to provide insights for the City Mayor. - Generate Overall Crime Baseline: Calculate total crimes per year and create a line plot to visualize trends. - Type of Crime Analysis: Identify the most prevalent crimes and visualize the types. - Seasonal Crime Fluctuations: Analyze crime patterns by season and visualize the data. - Geographic Crime Distribution: Summarize and visualize crime data by geographic categories (e.g., census tracts). - Temporal Crime Analysis: Identify patterns in crime occurrences by time and day of the week. - Demographic Analysis: If available, summarize demographic data of individuals involved in crimes.\nPhase 2: Affordable Housing (Fast Task) - Task 2: Examine the intersection of crime and affordable housing. - Affordable Housing Locations: Identify and validate the number of affordable housing locations. - Housing Units Analysis: Determine the total and share of affordable housing units. - Geographic Distribution: Visualize and summarize the distribution of affordable housing.\nPhase 3: Mapping Crime, Affordable Housing & Income - Task 3: Visualize the spatial relationship between crime, affordable housing, and income. - Load Data: Use leaflet and shapefiles to map city tracts and crime locations. - Crime Mapping: Create maps showing crime locations, filtered by year and crime type. - Affordable Housing Visualization: Add affordable housing data to the maps. - Income Distribution Mapping: Visualize income distribution alongside crime and housing data. - Enhanced Analysis: Experiment with color-coding crime data by season or type to uncover patterns.\nPhase 4: Joining Crime with Tracts - Task 4: Integrate crime data with geographic tracts to find crime hotspots. - Crime Grouping: Group crime data by geographic categories (e.g., census tracts) and summarize. - Identify Active Tracts: List the most active census tracts for crimes. - Data Integration: Merge crime, affordable housing, and geographic data to create a comprehensive dataset.\n\n\n\n\nCrime Data: Includes information on crime type, location (longitude, latitude), and geographic categories.\nAffordable Housing Data: Contains location and housing unit information.\nCity Census Tract Data: Shapefile with housing unit information.\n\n\n\n\n\nCities Covered: Austin, TX; Chicago, IL; Washington, DC; Los Angeles, CA; New York City, NY; Philadelphia, PA; San Diego, CA.",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 4"
+      "Data Workshop 2",
+      "DW2 - Instructions"
     ]
   },
   {
-    "objectID": "group3.html#team-members",
-    "href": "group3.html#team-members",
-    "title": "Group 3",
-    "section": "Team members",
-    "text": "Team members\n\nAmad Nadeem\nPeter Beniaris\nSarah Zhao",
+    "objectID": "dw2/final_work-dw2.html",
+    "href": "dw2/final_work-dw2.html",
+    "title": "Final Work - Outcomes",
+    "section": "",
+    "text": "Reading layer `austin_tracts' from data source \n  `/Users/arthursilvacheib/Documents/GitHub/pac-2024/pac24-data-workshop1/data-workshop1/dw2/data/tract/austin_tracts.shp' \n  using driver `ESRI Shapefile'\nSimple feature collection with 705 features and 9 fields\nGeometry type: POLYGON\nDimension:     XY\nBounding box:  xmin: -98.0104 ymin: 30.02345 xmax: -97.46976 ymax: 30.51948\nGeodetic CRS:  WGS 84\n\n\n\n\n\n\n\nStudent’s Work - Outcome 1\n\n\nRows: 19,910\nColumns: 18\n$ CCN        &lt;dbl&gt; 20400374, 20400836, 20116614, 20022660, 20025473, 20003902,…\n$ REPORT_DAT &lt;chr&gt; \"2020/03/23 01:13:49+00\", \"2020/06/25 03:57:28+00\", \"2020/0…\n$ SHIFT      &lt;chr&gt; \"EVENING\", \"MIDNIGHT\", \"DAY\", \"EVENING\", \"DAY\", \"DAY\", \"DAY…\n$ METHOD     &lt;chr&gt; \"OTHERS\", \"OTHERS\", \"OTHERS\", \"OTHERS\", \"OTHERS\", \"OTHERS\",…\n$ OFFENSE    &lt;chr&gt; \"THEFT/OTHER\", \"THEFT F/AUTO\", \"THEFT/OTHER\", \"THEFT/OTHER\"…\n$ BLOCK      &lt;chr&gt; \"900 - 999 BLOCK OF WHARF STREET SW\", \"300 - 399 BLOCK OF G…\n$ WARD       &lt;dbl&gt; 6, 6, 2, 6, 5, 5, 7, 2, 4, 7, 2, 4, 6, 6, 1, 5, 3, 8, 3, 8,…\n$ ANC        &lt;chr&gt; \"6D\", \"6C\", \"2G\", \"6A\", \"5A\", \"5A\", \"7F\", \"2E\", \"4C\", \"7E\",…\n$ DISTRICT   &lt;dbl&gt; 1, 1, 3, 1, 4, 4, 6, 2, 4, 6, 2, 4, 1, 1, 3, 5, 2, 7, 2, 7,…\n$ PSA        &lt;dbl&gt; 103, 104, 308, 104, 405, 406, 603, 206, 407, 605, 206, 404,…\n$ BID        &lt;chr&gt; \"SOUTHWEST\", NA, NA, NA, NA, NA, NA, \"GEORGETOWN\", NA, NA, …\n$ long       &lt;dbl&gt; -77.02625, -77.00131, -77.02192, -76.98365, -76.99601, -77.…\n$ lat        &lt;dbl&gt; 38.88002, 38.89891, 38.90354, 38.89829, 38.94728, 38.95421,…\n$ GEOID      &lt;dbl&gt; 110010102025, 110010083011, 110010048022, 110010080011, 110…\n$ Block      &lt;chr&gt; \"Block Group 5\", \"Block Group 1\", \"Block Group 2\", \"Block G…\n$ Tract      &lt;chr&gt; \"Census Tract 102.02\", \"Census Tract 83.01\", \"Census Tract …\n$ County     &lt;chr&gt; \"District of Columbia\", \"District of Columbia\", \"District o…\n$ State      &lt;chr&gt; \"District of Columbia\", \"District of Columbia\", \"District o…\n\n\n\n\n\n\n\n\n\n\n\nStudent’s Work - Outcome 2\n\n\n\n\n\n\n\n\nStudent’s Work - Outcome 3\n\n\n\n\n\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 3"
+      "Data Workshop 2",
+      "Final Work - Outcomes"
     ]
   },
   {
-    "objectID": "group3.html#phase-1-data-cleaning-and-preparation",
-    "href": "group3.html#phase-1-data-cleaning-and-preparation",
-    "title": "Group 3",
-    "section": "Phase 1: Data Cleaning and Preparation",
-    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is very well-structured and looking good!\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nmortality &lt;- read_csv(\"raw-datasets/5-wb-mortality_rate_under5.csv\")\nelectricty &lt;- read_csv(\"raw-datasets/6-wb-access_eletricity.csv\", skip = 4)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nmortality &lt;- mortality %&gt;% select(-country_name)\n\n# Good use of the line breaker here and the : operator\nnew_mortality &lt;- mortality %&gt;%\n  pivot_longer(\n    cols = yr_1960:yr_2023,\n    names_to = \"Year\",\n    values_to = \"Mortality\"\n  )\n\nnew_electricity &lt;- electricty %&gt;%\n  pivot_longer(\n    cols = `1960`:`2023`,\n    names_to = \"Year\",\n    values_to = \"Percent\"\n  )\n\n# All good here!\nwrite_csv(new_mortality, \"clean-datasets/clean_mortality.csv\")\nwrite_csv(new_electricity, \"clean-datasets/clean_electricity.csv\")",
+    "objectID": "dw4/instructions-dw4.html",
+    "href": "dw4/instructions-dw4.html",
+    "title": "DW4 - Instructions",
+    "section": "",
+    "text": "Data Workshop #4 - PAC 2024\n\nObjective\nThe Data Workshop #4 (DW4) is designed to provide participants with practical experience in visualizing survey data and running regression models. The workshop focuses on exploring demographic data, understanding the distribution of responses, and applying regression analysis to investigate relationships between variables.\n\n\nStructure of the Workshop\nPhase 1: Data Visualization The first phase focuses on visualizing the characteristics of the survey data to understand the variance in responses and the distribution of key demographic variables. Participants begin by summarizing and visualizing the distribution of education and age among survey participants. They then generate histograms or column graphs to analyze the distribution of gender and political party, race and political party, and presidential vote by gender and political party. Additionally, participants create visualizations to compare presidential vote by political ideology and social media use.\nPhase 2: Regression Analysis In the second phase, participants practice running regressions and interpreting the results using linear probability models (LPMs). They start by reviewing how to program a regression in R using the lm() function and understanding the limitations and interpretation of LPMs. Next, they perform regression analysis to estimate the likelihood of voting for Joe Biden based on various predictors, such as being a Democrat, gender, and race. Finally, participants interpret the coefficients from the regression models to understand the relationships between variables, providing insights into the factors influencing voting behavior.\n\n\nThe Data\nThe workshop utilizes data from the American National Election Studies (ANES) 2024 Pilot Study. This cross-sectional survey tests new questions for potential inclusion in the ANES 2024 Time Series Study and provides data on voting and public opinion during the early phase of the 2024 presidential election campaign. The dataset includes over 500 variables, but the workshop focuses on a subset of variables that have been pre-processed and recoded for analysis.\nKey Variables: - Demographic Indicators: is_female, is_employed, is_latino, is_black, is_asian, is_native_am, is_tworaces, is_middle_east, is_other, is_democrat, is_moderate. - Voting and Political Variables: pres_biden, prez_vote, ideo_type. - Social Media Use: socmed_use_scale. - Survey Weight: weight_spss.\n\n\nExample Tasks and Questions\nData Visualization: - Task: Analyze the distribution of gender and political party, race and political party, and presidential vote by gender and political party. - Question: What is the distribution of presidential votes across different political parties and ideologies?\nRegression Analysis: - Task: Estimate the likelihood of voting for Joe Biden based on various predictors. - Example Regression: Estimate the share of support for Joe Biden when regressing pres_biden on is_democrat and interpret the results to understand the impact of being a Democrat on voting for Biden. - Additional Questions: Control for additional variables such as gender and race to see how these factors influence the likelihood of voting for Biden.\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 3"
+      "Data Workshop 4",
+      "DW4 - Instructions"
     ]
   },
   {
-    "objectID": "group2.html#team-members",
-    "href": "group2.html#team-members",
-    "title": "Group 2",
-    "section": "Team members",
-    "text": "Team members\n\nAlece Stancin\nCatherine Arevalo\nRachel Blume",
+    "objectID": "dw4/final_work-dw4.html#students-work---outcome-2",
+    "href": "dw4/final_work-dw4.html#students-work---outcome-2",
+    "title": "Final Work - Outcomes",
+    "section": "Student’s Work - Outcome 2",
+    "text": "Student’s Work - Outcome 2",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 2"
+      "Data Workshop 4",
+      "Final Work - Outcomes"
     ]
   },
   {
-    "objectID": "group2.html#phase-1-data-cleaning-and-preparation",
-    "href": "group2.html#phase-1-data-cleaning-and-preparation",
-    "title": "Group 2",
-    "section": "Phase 1: Data Cleaning and Preparation",
-    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is well-structured and shows a good grasp of data manipulation in R.\n# - Make sure to use comments to explain why each step!\n# - Make more use of the pipe operator to do more things in a sequence\n\n# All good here! (good start!)\nlibrary(tidyverse)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here! Good practice!\nfolder_path &lt;- \"C:/Users/alece/OneDrive/Documents/PAC/Data Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\nincome &lt;- read_csv(\"income.csv\", skip = 4, col_names = TRUE)\npoverty &lt;- read_csv(\"poverty.csv\")\n\n# All good here!\nglimpse(income)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\n# Suggestion 2: keep the arguments separate by empty spaces\npoverty_longer &lt;- poverty %&gt;%\n  pivot_longer(cols=c(yr_1960:yr_2023), names_to= \"Year\", values_to=\"measurement\")\n\n# All good here!\nglimpse(poverty)\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;%\n  mutate(Year = str_remove(Year, \"yr_\"))\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  select(-\"Indicator Name\")\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  mutate(Year = as.numeric(Year))\n\nglimpse(poverty_longer)\nglimpse(income)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nincome &lt;- income %&gt;% mutate(`Country Code` = str_remove(`Country Code`, \"ISO_\"))\nincome &lt;- income %&gt;% select(-\"...68\")\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nincome_longer &lt;- income %&gt;% pivot_longer(cols=c(`1960`:`2023`), names_to = \"Year\", values_to= \"measurement\")\n\nincome_longer &lt;- income_longer %&gt;% select(-\"Indicator Name\")\n\nincome_longer &lt;- income_longer %&gt;% mutate(Year = as.numeric(Year))\n\n# Writing cleaned and transformed data to CSV files, crucial for saving work and enabling further analysis.\nwrite.csv(income_longer, \"income_clean.csv\")\nwrite.csv(poverty_longer, \"poverty_clean.csv\")",
+    "objectID": "dw4/final_work-dw4.html#students-work---outcome-3",
+    "href": "dw4/final_work-dw4.html#students-work---outcome-3",
+    "title": "Final Work - Outcomes",
+    "section": "Student’s Work - Outcome 3",
+    "text": "Student’s Work - Outcome 3",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 2"
+      "Data Workshop 4",
+      "Final Work - Outcomes"
     ]
   },
   {
-    "objectID": "final_work.html#phase-3-data-visualization-and-presentation-group-phase",
-    "href": "final_work.html#phase-3-data-visualization-and-presentation-group-phase",
-    "title": "Visualizations",
-    "section": "Phase 3: Data Visualization and Presentation (group phase)",
-    "text": "Phase 3: Data Visualization and Presentation (group phase)\n\nGraph 1: Evolution of Slum Population over Time by Continent\n\n# Computing the average slum population per continent and year\naverage_slum_pop &lt;- final_table %&gt;%\n  filter(!is.na(slum_pop) & !is.na(country)) |&gt; \n  group_by(continent, year) %&gt;%\n  summarise(avg_slum_pop = mean(slum_pop, na.rm = TRUE))\n\n# Getting the number per country\navg_slum_pop_continent &lt;- final_table %&gt;%\n  group_by(continent) %&gt;%\n  summarise(avg_slum_pop = mean(slum_pop, na.rm = TRUE)) %&gt;%\n  ungroup() |&gt; \n  filter(!continent %in% c('Oceania', NA))\n\n# Joining the average back to the original data\nplot1_data &lt;- final_table %&gt;%\n  select(country, year, slum_pop, continent) |&gt; \n  filter(!is.na(slum_pop) & !is.na(country)) |&gt; \n  left_join(average_slum_pop, by = c(\"continent\", \"year\")) %&gt;%\n  mutate(color = ifelse(slum_pop &gt;= avg_slum_pop, \"grey\", \"red\"))\n\n## Elements 2 and 3 of a Graph: the aesthetics + the geometry\nplot1_data |&gt; \n  filter(continent != 'Oceania') |&gt; \n  ggplot(aes(x = year, y = slum_pop, color = color, group = country)) +\n  geom_line() +\n  geom_point() +\n  theme_light() +\n  facet_wrap(~ continent) +\n  scale_color_manual(values = c(\"grey\", \"red\")) +\n  labs(title = 'Evolution of Slum Population (%) over time by Continent',\n       caption = 'Source: The World Bank',\n       y = 'Population living in Slums (%)',\n       x = '') +\n  theme(legend.position = \"none\") +\n  scale_x_continuous(breaks = seq(2000, 2020, 2)) +\n  geom_text(data = avg_slum_pop_continent,\n            aes(x = 2020, y = 90, label = paste0(\"Avg slum pop.: \", round(avg_slum_pop, 2), \"%\")),\n            inherit.aes = FALSE,\n            hjust = \"right\", vjust = 0, size = 3.5, color = \"blue\")\n\n\n\n\nGraph 2: Government Expenditure on Education\n\n## (2) What countries are more likely to have a higher expenditure on Education (richer countries?)\n\n## Element 1 of a Graph: the dataset\n# Calculate the world average government expenditure on education\nworld_avg_exp &lt;- final_table %&gt;%\n  summarise(avg_gov_exp = mean(gov_exp, na.rm = TRUE))\n\n# Create a new column in final_table to indicate whether expenditure is above or below the world average\nfinal_table &lt;- final_table %&gt;%\n  mutate(color = ifelse(gov_exp &gt;= world_avg_exp$avg_gov_exp, \"country\", \"red\"))\n\n## Elements 2 and 3 of a Graph: the aesthetics + the geometry\nfinal_table %&gt;%\n  select(country, continent, year, total_gdp, gov_exp, color) %&gt;%\n  filter(!is.na(total_gdp) & !is.na(gov_exp) & !is.na(country)) %&gt;%\n  filter(continent != 'Oceania') %&gt;%\n  filter(year == 2005) |&gt; \n  ggplot(aes(x = log(total_gdp), y = gov_exp, color = color)) +\n  geom_point() +\n  scale_color_manual(values = c(\"country\" = \"grey\", \"red\" = \"red\")) +\n  facet_wrap(~ continent + year, scales = \"free_x\") +\n  geom_smooth(method = 'lm', se = F, color = 'lightblue') +\n  theme_minimal() +\n  labs(title = 'Relationship of Income and Gov. Expenditure in Education',\n       subtitle = 'Countries colored read are below the world average',\n       caption = 'Source: The World Bank',\n       y = 'Government Expenditure (%)',\n       x = 'Log of Total GDP') +\n  theme(legend.position = \"none\")",
+    "objectID": "dw4/final_work-dw4.html#students-work---outcome-4",
+    "href": "dw4/final_work-dw4.html#students-work---outcome-4",
+    "title": "Final Work - Outcomes",
+    "section": "Student’s Work - Outcome 4",
+    "text": "Student’s Work - Outcome 4",
     "crumbs": [
-      "Data Workshop 1",
-      "Visualizations"
+      "Data Workshop 4",
+      "Final Work - Outcomes"
+    ]
+  },
+  {
+    "objectID": "dw4/final_work-dw4.html#students-work---outcome-5",
+    "href": "dw4/final_work-dw4.html#students-work---outcome-5",
+    "title": "Final Work - Outcomes",
+    "section": "Student’s Work - Outcome 5",
+    "text": "Student’s Work - Outcome 5\n\n\n\n&lt;table style=\"text-align:center\"&gt;&lt;tr&gt;&lt;td colspan=\"2\" style=\"border-bottom: 1px solid black\"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan=\"1\" style=\"border-bottom: 1px solid black\"&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;pres_biden&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td colspan=\"2\" style=\"border-bottom: 1px solid black\"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;is_democrat&lt;/td&gt;&lt;td&gt;0.512&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;(0.023)&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;Constant&lt;/td&gt;&lt;td&gt;0.182&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;(0.013)&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td colspan=\"2\" style=\"border-bottom: 1px solid black\"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;Observations&lt;/td&gt;&lt;td&gt;1,483&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.256&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.255&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;0.374 (df = 1481)&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;F Statistic&lt;/td&gt;&lt;td&gt;508.496&lt;sup&gt;***&lt;/sup&gt; (df = 1; 1481)&lt;/td&gt;&lt;/tr&gt;\n&lt;tr&gt;&lt;td colspan=\"2\" style=\"border-bottom: 1px solid black\"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style=\"text-align:left\"&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td style=\"text-align:right\"&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;\n&lt;/table&gt;",
+    "crumbs": [
+      "Data Workshop 4",
+      "Final Work - Outcomes"
+    ]
+  },
+  {
+    "objectID": "dw3/group-work-dw3.html",
+    "href": "dw3/group-work-dw3.html",
+    "title": "Group Work",
+    "section": "",
+    "text": "Student’s Code - Section 1\n\n# libraries\nlibrary(tidyverse)\nlibrary(here)\npath &lt;- here('dw3', 'data')\n# loading in the data\nfood_establishment &lt;- read_csv(here(path, \"food_establishment.csv\"))\ninspections_info &lt;- read_csv(here(path, \"inspections_info.csv\"))\n\n# checking data\nglimpse(food_establishment)\nglimpse(inspections_info)\n\n# 1. Inspect column named inspection_date and find a way of dealing with the T00:00:00 inside of it after the date - this seems to be an error of the system.\n# Step 1\n# Hint: check the `separate` function (run: ?separate)\n\ninspections_info_step1 &lt;- \n  inspections_info |&gt;\n  mutate(inspection_date = mdy_hms(inspection_date))\n# separate(inspection_date, into = c(\"date\", \"hms\"), sep = \"T\")\n\n# 2. Inspect column named risk and check how to separate the numeric relevant information (risk goes from 1 to 3) from the character relevant information (low, medium, high).\n## Step 2\n# Hint: check the `separate` function again and also some of the `str_` functions\n\nfood_establishment_step2 &lt;- \n  food_establishment %&gt;% \n  mutate(risk_number=\n           case_when(\n             risk == \"Risk 1 (High)\" ~ 1,\n             risk == \"Risk 2 (Medium)\" ~ 2,\n             risk == \"Risk 3 (Low)\" ~ 3\n           ),\n         risk_category =\n           case_when(\n             risk == \"Risk 1 (High)\" ~ \"High\",\n             risk == \"Risk 2 (Medium)\" ~ \"Medium\",\n             risk == \"Risk 3 (Low)\" ~ \"Low\"\n           ),\n         .before = 2\n  )\n\n\n# 3. Inspect the column named address_facility, and find a way of breaking the information contained there down into two columns: facility_type and address.\n\n# Step 3\n# Hint: check the `separate` function again (check some other parameters of it)\n\nfood_establishment_step3 &lt;- \n  food_establishment_step2 |&gt;\n  separate(address_facility, into = c(\"facility_type\", \"address\"),\n           sep = \" - \") |&gt;\n  mutate(address = str_trim(address) )\n\n# 4. Join the two tables inspections_info and food_establishment - Check what is the column that they share in common, and discover which join function you should use.  \n## Step 4\n# Hint: check the `left_join` function (run: ?left_join)\n\n\nfinal &lt;- \n  food_establishment_step3 %&gt;%\n  left_join(inspections_info_step1, join_by(inspection_id))\n\nsum(is.na(final$results))\n\n# section 2\n# Seasonal Trends in Food Safety Violations: are there seasonal trends in the types and frequencies of food safety violations?\n\n## Step 1: Convert the inspection_date to date format\nfinal\n## Step 2: Extract month and year from the inspection_date to analyze seasonal\nfinal_2 &lt;-\n  final |&gt;\n  mutate(new_month = month(inspection_date, label = TRUE),\n         new_year = year(inspection_date),\n         inspection_days = wday(inspection_date, label = TRUE))\n## Step 3: Group by month and year, then summarize the number of violations\nfinal_3 &lt;-\nfinal_2 |&gt;\n  group_by(new_year,new_month) |&gt;\n  summarise(total_violations = n())\n\n## Step 4: Plot the data to see the seasonal trend (year as different lines?)\nfinal_3 |&gt;\n  ggplot(aes(x = new_month, y =total_violations, color = factor(new_year), group= new_year)) +\n  geom_point() +\n  geom_line() +\n  scale_y_continuous(labels = scales::label_comma()) +\n  theme_light() +\n  labs(\n    color = \"Year\",\n    y = \"Total Violations\",\n    \n  ) +\n  theme(legend.position = \"bottom\") +\n  facet_wrap(~new_year)\n\n\n\n# Effectiveness of Canvass vs. Complaint-Driven: are complaint-driven inspections more likely to result in violations being compared to Canvass inspections?\n  \n## Step 1: Crete a column that data for complaint-driven and Canvass inspections\n\n\ncanvas &lt;- \n  c(\"Canvass Re-Inspection\",\"Canvass\",\"Canvass\")\ncomplaint &lt;- \n  c(\"Complaint Re-Inspection\",\"Complaint\", \"Complaint\")\n\n\n\n\n\nfinal_c &lt;- \n  final |&gt;\n  filter(inspection_type %in% canvas |\n           inspection_type %in% complaint) |&gt;\n  mutate(canvas = if_else(inspection_type %in% canvas, 1,0),\n         complaint = if_else(inspection_type %in% complaint, 1,0),\n         inspection_type = case_when(\n           inspection_type %in% canvas ~ \"canvas\",\n           inspection_type %in% complaint ~ \"complaint\",\n           .default = inspection_type\n         )\n  )\n\ntable(final_c$inspection_type)\n\n## Step 2: Group by inspection type and summarize the failure rates\nfinal_c |&gt;\n  mutate(pass = ifelse(results == \"Pass\",1,0),\n         fail = ifelse(results == \"Fail\",1,0)\n         ) |&gt;\n  group_by(inspection_type) |&gt;\n  summarize(percent_pass = mean(pass, na.rm =T)) |&gt;\n  ggplot(aes(x = inspection_type, y = percent_pass,fill= factor(inspection_type))) +\n  geom_col() +\n  labs(fill = \"Type of Inspection\") +\n  theme_light()\n  \n  \n## Step 3: Plot the comparison\n\n# 2. Risk Analysis by Facility Type: which types of facilities are most prone to high-risk violations, and does this vary by facility type (e.g., restaurants, bakeries, schools)?\ncanvas &lt;- \n  c(\"Canvass Re-Inspection\",\"Canvass\",\"Canvass\")\ncomplaint &lt;- \n  c(\"Complaint Re-Inspection\",\"Complaint\", \"Complaint\")\n\n# risk_final &lt;-\nfacility &lt;-  final |&gt;\n  filter(risk == \"Risk 1 (High)\") |&gt;\n  count(facility_type) |&gt;\n  arrange(-n) |&gt;\n  head(9) |&gt;\n  pull(facility_type)\n\nfinal |&gt;\n  filter(inspection_type %in% canvas |\n           inspection_type %in% complaint,\n         facility_type %in% facility) |&gt;\n  mutate(pass = ifelse(results == \"Pass\",1,0),\n         fail = ifelse(results == \"Fail\",1,0) ) |&gt;\n  group_by(inspection_type,facility_type) |&gt;\n  summarize(percent_pass = mean(pass, na.rm =T)) |&gt;\n  ggplot(aes(x = inspection_type, y = percent_pass, fill = factor(facility_type))) +\n  geom_col(color = \"black\") + \n  scale_fill_brewer(palette = \"Paired\") +\n  labs(fill = \"Types of Facilities\") +\n  theme_light()\n\n\n\nStudent’s Code - Section 2\n\n## SUGGESTED ANSWER - SECTION 1 ##\n\n# Libraries\nlibrary(tidyverse)\nlibrary(lubridate)\nlibrary(here)\n\n# Data\n# The data will be the ne coming from the cleaning stage (phase 1)\n\n## Percentage of restaurants that fail the inspection\n# First, we find all the restaurants in the dataset\nrestaurants &lt;- food_inspections |&gt; \n  filter(facility_type == \"Restaurant\")\n\n\n# Second, we calculate the percentage of restaurants that fail the inspection\n# Notice, this is the population mean (the true mean)\nrestaurant_fail_mean &lt;- restaurants |&gt; \n  group_by(facility_type) |&gt; \n  summarize(failed = sum(results == \"Fail\") / n()) |&gt; \n  pull(failed)\n\n\n## POINT ESTIMATE ##\n\n## However, suppose we don't have the entire dataset, but only a sample of it. Namely, suppose we\n# go out 20 times and inspect 50 restaurants each time. Would the Central Limit Theorem kick in? Meaning, \n# if we do this, do we have any chances of getting a sample mean that is close to the population mean?\n\n# If we were to sample 20 rounds of inspections, each inspection with 50 restaurants:\nn_samples &lt;- 20\nsample_size &lt;- 50\n\n## Sampling (with a for loop)\nset.seed(123)\nsample_mean &lt;- numeric(n_samples)\n\nfor (i in 1:n_samples) {\n  sample_mean[i] &lt;- restaurants |&gt; \n    sample_n(sample_size) |&gt; \n    summarize(sample_mean = sum(results == \"Fail\") / n()) |&gt; \n    pull(sample_mean)\n}\n\n## Put all distribution average on the same graph (as sticks)\nggplot() +\n  geom_histogram(aes(x = sample_mean), bins = 5, fill = \"blue\", alpha = 0.5) +\n  geom_vline(xintercept = restaurant_fail_mean, color = \"red\") +\n  labs(title = \"Distribution of Sample Means\",\n       x = \"Sample Mean\",\n       y = \"Frequency\") +\n  theme_minimal()\n\n\n## CONFIDENCE INTERVAL ##\n# Recalculating the sample mean\nsample_mean &lt;- sample_mean |&gt; \n  mean()\n\n# Let's work with 99% confidence interval\nconfidence_level &lt;- 0.99\nz_value &lt;- qnorm((1 + confidence_level) / 2)\n\n## Calculate the standard error\nstandard_error &lt;- sqrt(sample_mean * (1 - sample_mean) / sample_size)\n\n## Calculate the margin of error\nlower_bound &lt;- sample_mean - (z_value * standard_error)\nupper_bound &lt;- sample_mean + (z_value * standard_error)\n\nconfidence_interval &lt;- c(lower_bound, upper_bound)\n\n## Ploting the confidence interval (errorbar) + the sample mean (point) + the population mean (hline)\nggplot() +\n  geom_point(aes(x = 1, y = sample_mean), color = \"red\") +\n  geom_errorbar(aes(x = 1, ymin = lower_bound, ymax = upper_bound), width = 0.1) +\n  geom_hline(yintercept = restaurant_fail_mean, color = \"green\") +\n  labs(title = \"Confidence Interval for Restaurant Failures\",\n       x = \"Sample\",\n       y = \"Failure Rate\") +\n  theme_minimal() +\n  theme(axis.text.x = element_blank(),\n        axis.ticks.x = element_blank()) +\n  scale_y_continuous(limits = c(0, 0.5))\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workshop 3",
+      "Group Work"
     ]
   },
   {
@@ -87,6 +109,183 @@
     ]
   },
   {
+    "objectID": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation",
+    "href": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group Work",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - Good use of tidyverse for data manipulation, which is powerful and expressive.\n# - Consistent formatting in code makes it easier to read and maintain.\n# - Consider commenting the script a bit more!\n\n# All good here!\nfolder_path = \"/Users/faelmassa/Desktop/Project Drac de Fusta/Harris PAC - AvrMai24/Policy Analytics Credential - UChicago Harris/Lectures/Week 3 - L10 - L14/Workshop 2/\"\nsetwd(folder_path)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nslums &lt;- read.csv(\"1-wb-slum_population.csv\")\nruralpop &lt;- read_csv(\"2-wb-rural_population.csv\", skip = 4) \n\n# All good here!\nglimpse(ruralpop)\ncolnames(ruralpop)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nruralpop &lt;- ruralpop %&gt;%\n  pivot_longer(cols = \"1960\":\"2023\",\n               names_to = \"Year\",\n               values_to = \"Rural Pop (%)\")\n\n# All good here!\nruralpop &lt;- ruralpop[, -4]\n\n# Almost all good!\n# Issue (same from above): column's name (remember, R don't like empty spaces)\nruralpop_3 &lt;- ruralpop %&gt;%\n  mutate(`Country Code` = str_sub(`Country Code`, 5, 7))\n\n# Same issue!\nruralpop_final &lt;- ruralpop_3 %&gt;%\n  select(`Country Code`, `Indicator Code`, Year, `Rural Pop (%)`)\n\n# All good here!\nruralpop_final &lt;- ruralpop_final %&gt;%\n  mutate(Year = as.numeric(Year))",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group Work"
+    ]
+  },
+  {
+    "objectID": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-1",
+    "href": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-1",
+    "title": "Group Work",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is well-structured and shows a good grasp of data manipulation in R.\n# - Make sure to use comments to explain why each step!\n# - Make more use of the pipe operator to do more things in a sequence\n\n# All good here! (good start!)\nlibrary(tidyverse)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here! Good practice!\nfolder_path &lt;- \"C:/Users/alece/OneDrive/Documents/PAC/Data Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\nincome &lt;- read_csv(\"income.csv\", skip = 4, col_names = TRUE)\npoverty &lt;- read_csv(\"poverty.csv\")\n\n# All good here!\nglimpse(income)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\n# Suggestion 2: keep the arguments separate by empty spaces\npoverty_longer &lt;- poverty %&gt;%\n  pivot_longer(cols=c(yr_1960:yr_2023), names_to= \"Year\", values_to=\"measurement\")\n\n# All good here!\nglimpse(poverty)\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;%\n  mutate(Year = str_remove(Year, \"yr_\"))\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  select(-\"Indicator Name\")\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  mutate(Year = as.numeric(Year))\n\nglimpse(poverty_longer)\nglimpse(income)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nincome &lt;- income %&gt;% mutate(`Country Code` = str_remove(`Country Code`, \"ISO_\"))\nincome &lt;- income %&gt;% select(-\"...68\")\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nincome_longer &lt;- income %&gt;% pivot_longer(cols=c(`1960`:`2023`), names_to = \"Year\", values_to= \"measurement\")\n\nincome_longer &lt;- income_longer %&gt;% select(-\"Indicator Name\")\n\nincome_longer &lt;- income_longer %&gt;% mutate(Year = as.numeric(Year))\n\n# Writing cleaned and transformed data to CSV files, crucial for saving work and enabling further analysis.\nwrite.csv(income_longer, \"income_clean.csv\")\nwrite.csv(poverty_longer, \"poverty_clean.csv\")",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group Work"
+    ]
+  },
+  {
+    "objectID": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-2",
+    "href": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-2",
+    "title": "Group Work",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is very well-structured and looking good!\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nmortality &lt;- read_csv(\"raw-datasets/5-wb-mortality_rate_under5.csv\")\nelectricty &lt;- read_csv(\"raw-datasets/6-wb-access_eletricity.csv\", skip = 4)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nmortality &lt;- mortality %&gt;% select(-country_name)\n\n# Good use of the line breaker here and the : operator\nnew_mortality &lt;- mortality %&gt;%\n  pivot_longer(\n    cols = yr_1960:yr_2023,\n    names_to = \"Year\",\n    values_to = \"Mortality\"\n  )\n\nnew_electricity &lt;- electricty %&gt;%\n  pivot_longer(\n    cols = `1960`:`2023`,\n    names_to = \"Year\",\n    values_to = \"Percent\"\n  )\n\n# All good here!\nwrite_csv(new_mortality, \"clean-datasets/clean_mortality.csv\")\nwrite_csv(new_electricity, \"clean-datasets/clean_electricity.csv\")",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group Work"
+    ]
+  },
+  {
+    "objectID": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-3",
+    "href": "dw1/group-work-dw1.html#phase-1-data-cleaning-and-preparation-3",
+    "title": "Group Work",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is looking good in loading and processing the data!\n# - Good naming of the variables!\n\n# All good here!\nlibrary(gapminder)\nlibrary(tidyverse)\n\n# All good here!\noptions(stringsAsFactors = FALSE) \noptions(scipen = 999999)\n\n# All good here!\nfolder_path = \"C:/Users/jhetzel/Desktop/PAC/Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\ngdp &lt;- read.csv(\"7-wb-gdp_per_capita.csv\")\ngov_expenditure &lt;- read.csv(\"8-wb-gov_expenditure_education.csv\", skip = 3)\n\n# All good here!\ncleangdp &lt;- gdp %&gt;%\n  select(Country.Name, Country.Code, c(yr_1960 : yr_2005)) %&gt;%\n  pivot_longer(cols = c(yr_1960 : yr_2005),\n               names_to = \"years\",\n               values_to = \"total_gdp\", \n               values_drop_na = TRUE) \n\n# All good here!\nnew_names &lt;- as.character(gov_expenditure[1, ])\ngov_expenditure &lt;- gov_expenditure[-1, ]\ncolnames(gov_expenditure) &lt;- new_names\n\n# All good here!\nclean_gov_expenditure &lt;- gov_expenditure %&gt;%\n  select('Country Code', c('1960' : '2006')) %&gt;%\n  pivot_longer(cols = c('1960' : '2006'),\n               names_to = \"years\",\n               values_to = \"expenditure\", \n               values_drop_na = TRUE)",
+    "crumbs": [
+      "Data Workshop 1",
+      "Group Work"
+    ]
+  },
+  {
+    "objectID": "dw1/final-work-dw1.html#phase-3-data-visualization-and-presentation-group-phase",
+    "href": "dw1/final-work-dw1.html#phase-3-data-visualization-and-presentation-group-phase",
+    "title": "Final Work - Outcomes",
+    "section": "Phase 3: Data Visualization and Presentation (group phase)",
+    "text": "Phase 3: Data Visualization and Presentation (group phase)\n\nGraph 1: Evolution of Slum Population over Time by Continent\n\n# Computing the average slum population per continent and year\naverage_slum_pop &lt;- final_table %&gt;%\n  filter(!is.na(slum_pop) & !is.na(country)) |&gt; \n  group_by(continent, year) %&gt;%\n  summarise(avg_slum_pop = mean(slum_pop, na.rm = TRUE))\n\n# Getting the number per country\navg_slum_pop_continent &lt;- final_table %&gt;%\n  group_by(continent) %&gt;%\n  summarise(avg_slum_pop = mean(slum_pop, na.rm = TRUE)) %&gt;%\n  ungroup() |&gt; \n  filter(!continent %in% c('Oceania', NA))\n\n# Joining the average back to the original data\nplot1_data &lt;- final_table %&gt;%\n  select(country, year, slum_pop, continent) |&gt; \n  filter(!is.na(slum_pop) & !is.na(country)) |&gt; \n  left_join(average_slum_pop, by = c(\"continent\", \"year\")) %&gt;%\n  mutate(color = ifelse(slum_pop &gt;= avg_slum_pop, \"grey\", \"red\"))\n\n## Elements 2 and 3 of a Graph: the aesthetics + the geometry\nplot1_data |&gt; \n  filter(continent != 'Oceania') |&gt; \n  ggplot(aes(x = year, y = slum_pop, color = color, group = country)) +\n  geom_line() +\n  geom_point() +\n  theme_light() +\n  facet_wrap(~ continent) +\n  scale_color_manual(values = c(\"grey\", \"red\")) +\n  labs(title = 'Evolution of Slum Population (%) over time by Continent',\n       caption = 'Source: The World Bank',\n       y = 'Population living in Slums (%)',\n       x = '') +\n  theme(legend.position = \"none\") +\n  scale_x_continuous(breaks = seq(2000, 2020, 2)) +\n  geom_text(data = avg_slum_pop_continent,\n            aes(x = 2020, y = 90, label = paste0(\"Avg slum pop.: \", round(avg_slum_pop, 2), \"%\")),\n            inherit.aes = FALSE,\n            hjust = \"right\", vjust = 0, size = 3.5, color = \"blue\")\n\n\n\n\nGraph 2: Government Expenditure on Education\n\n## (2) What countries are more likely to have a higher expenditure on Education (richer countries?)\n\n## Element 1 of a Graph: the dataset\n# Calculate the world average government expenditure on education\nworld_avg_exp &lt;- final_table %&gt;%\n  summarise(avg_gov_exp = mean(gov_exp, na.rm = TRUE))\n\n# Create a new column in final_table to indicate whether expenditure is above or below the world average\nfinal_table &lt;- final_table %&gt;%\n  mutate(color = ifelse(gov_exp &gt;= world_avg_exp$avg_gov_exp, \"country\", \"red\"))\n\n## Elements 2 and 3 of a Graph: the aesthetics + the geometry\nfinal_table %&gt;%\n  select(country, continent, year, total_gdp, gov_exp, color) %&gt;%\n  filter(!is.na(total_gdp) & !is.na(gov_exp) & !is.na(country)) %&gt;%\n  filter(continent != 'Oceania') %&gt;%\n  filter(year == 2005) |&gt; \n  ggplot(aes(x = log(total_gdp), y = gov_exp, color = color)) +\n  geom_point() +\n  scale_color_manual(values = c(\"country\" = \"grey\", \"red\" = \"red\")) +\n  facet_wrap(~ continent + year, scales = \"free_x\") +\n  geom_smooth(method = 'lm', se = F, color = 'lightblue') +\n  theme_minimal() +\n  labs(title = 'Relationship of Income and Gov. Expenditure in Education',\n       subtitle = 'Countries colored read are below the world average',\n       caption = 'Source: The World Bank',\n       y = 'Government Expenditure (%)',\n       x = 'Log of Total GDP') +\n  theme(legend.position = \"none\")",
+    "crumbs": [
+      "Data Workshop 1",
+      "Final Work - Outcomes"
+    ]
+  },
+  {
+    "objectID": "dw1/group3.html#team-members",
+    "href": "dw1/group3.html#team-members",
+    "title": "Group 3",
+    "section": "Team members",
+    "text": "Team members\n\nAmad Nadeem\nPeter Beniaris\nSarah Zhao"
+  },
+  {
+    "objectID": "dw1/group3.html#phase-1-data-cleaning-and-preparation",
+    "href": "dw1/group3.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 3",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is very well-structured and looking good!\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nmortality &lt;- read_csv(\"raw-datasets/5-wb-mortality_rate_under5.csv\")\nelectricty &lt;- read_csv(\"raw-datasets/6-wb-access_eletricity.csv\", skip = 4)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nmortality &lt;- mortality %&gt;% select(-country_name)\n\n# Good use of the line breaker here and the : operator\nnew_mortality &lt;- mortality %&gt;%\n  pivot_longer(\n    cols = yr_1960:yr_2023,\n    names_to = \"Year\",\n    values_to = \"Mortality\"\n  )\n\nnew_electricity &lt;- electricty %&gt;%\n  pivot_longer(\n    cols = `1960`:`2023`,\n    names_to = \"Year\",\n    values_to = \"Percent\"\n  )\n\n# All good here!\nwrite_csv(new_mortality, \"clean-datasets/clean_mortality.csv\")\nwrite_csv(new_electricity, \"clean-datasets/clean_electricity.csv\")"
+  },
+  {
+    "objectID": "dw1/group2.html#team-members",
+    "href": "dw1/group2.html#team-members",
+    "title": "Group 2",
+    "section": "Team members",
+    "text": "Team members\n\nAlece Stancin\nCatherine Arevalo\nRachel Blume"
+  },
+  {
+    "objectID": "dw1/group2.html#phase-1-data-cleaning-and-preparation",
+    "href": "dw1/group2.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 2",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is well-structured and shows a good grasp of data manipulation in R.\n# - Make sure to use comments to explain why each step!\n# - Make more use of the pipe operator to do more things in a sequence\n\n# All good here! (good start!)\nlibrary(tidyverse)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here! Good practice!\nfolder_path &lt;- \"C:/Users/alece/OneDrive/Documents/PAC/Data Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\nincome &lt;- read_csv(\"income.csv\", skip = 4, col_names = TRUE)\npoverty &lt;- read_csv(\"poverty.csv\")\n\n# All good here!\nglimpse(income)\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\n# Suggestion 2: keep the arguments separate by empty spaces\npoverty_longer &lt;- poverty %&gt;%\n  pivot_longer(cols=c(yr_1960:yr_2023), names_to= \"Year\", values_to=\"measurement\")\n\n# All good here!\nglimpse(poverty)\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;%\n  mutate(Year = str_remove(Year, \"yr_\"))\nglimpse(poverty_longer)\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  select(-\"Indicator Name\")\n\n# Great cleaning!\npoverty_longer &lt;- poverty_longer %&gt;% \n  mutate(Year = as.numeric(Year))\n\nglimpse(poverty_longer)\nglimpse(income)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nincome &lt;- income %&gt;% mutate(`Country Code` = str_remove(`Country Code`, \"ISO_\"))\nincome &lt;- income %&gt;% select(-\"...68\")\n\n# All almost good here!\n# Suggestion 1: breaking the lines for readability\nincome_longer &lt;- income %&gt;% pivot_longer(cols=c(`1960`:`2023`), names_to = \"Year\", values_to= \"measurement\")\n\nincome_longer &lt;- income_longer %&gt;% select(-\"Indicator Name\")\n\nincome_longer &lt;- income_longer %&gt;% mutate(Year = as.numeric(Year))\n\n# Writing cleaned and transformed data to CSV files, crucial for saving work and enabling further analysis.\nwrite.csv(income_longer, \"income_clean.csv\")\nwrite.csv(poverty_longer, \"poverty_clean.csv\")"
+  },
+  {
+    "objectID": "dw1/group1.html#team-members",
+    "href": "dw1/group1.html#team-members",
+    "title": "Group 1",
+    "section": "Team members",
+    "text": "Team members\n\nMarcus Martinez\nRaimundo Gana\nFatima Zehra\nThompson D."
+  },
+  {
+    "objectID": "dw1/group1.html#phase-1-data-cleaning-and-preparation",
+    "href": "dw1/group1.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 1",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - Good use of tidyverse for data manipulation, which is powerful and expressive.\n# - Consistent formatting in code makes it easier to read and maintain.\n# - Consider commenting the script a bit more!\n\n# All good here!\nfolder_path = \"/Users/faelmassa/Desktop/Project Drac de Fusta/Harris PAC - AvrMai24/Policy Analytics Credential - UChicago Harris/Lectures/Week 3 - L10 - L14/Workshop 2/\"\nsetwd(folder_path)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nslums &lt;- read.csv(\"1-wb-slum_population.csv\")\nruralpop &lt;- read_csv(\"2-wb-rural_population.csv\", skip = 4) \n\n# All good here!\nglimpse(ruralpop)\ncolnames(ruralpop)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nruralpop &lt;- ruralpop %&gt;%\n  pivot_longer(cols = \"1960\":\"2023\",\n               names_to = \"Year\",\n               values_to = \"Rural Pop (%)\")\n\n# All good here!\nruralpop &lt;- ruralpop[, -4]\n\n# Almost all good!\n# Issue (same from above): column's name (remember, R don't like empty spaces)\nruralpop_3 &lt;- ruralpop %&gt;%\n  mutate(`Country Code` = str_sub(`Country Code`, 5, 7))\n\n# Same issue!\nruralpop_final &lt;- ruralpop_3 %&gt;%\n  select(`Country Code`, `Indicator Code`, Year, `Rural Pop (%)`)\n\n# All good here!\nruralpop_final &lt;- ruralpop_final %&gt;%\n  mutate(Year = as.numeric(Year))"
+  },
+  {
+    "objectID": "dw1/group4.html#team-members",
+    "href": "dw1/group4.html#team-members",
+    "title": "Group 4",
+    "section": "Team members",
+    "text": "Team members\n\nJulia Hetzel\nLuis Emilio\nNibin Zheng\nRachel Ruff"
+  },
+  {
+    "objectID": "dw1/group4.html#phase-1-data-cleaning-and-preparation",
+    "href": "dw1/group4.html#phase-1-data-cleaning-and-preparation",
+    "title": "Group 4",
+    "section": "Phase 1: Data Cleaning and Preparation",
+    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - The script is looking good in loading and processing the data!\n# - Good naming of the variables!\n\n# All good here!\nlibrary(gapminder)\nlibrary(tidyverse)\n\n# All good here!\noptions(stringsAsFactors = FALSE) \noptions(scipen = 999999)\n\n# All good here!\nfolder_path = \"C:/Users/jhetzel/Desktop/PAC/Workshop 1\"\nsetwd(folder_path)\n\n# All good here!\ngdp &lt;- read.csv(\"7-wb-gdp_per_capita.csv\")\ngov_expenditure &lt;- read.csv(\"8-wb-gov_expenditure_education.csv\", skip = 3)\n\n# All good here!\ncleangdp &lt;- gdp %&gt;%\n  select(Country.Name, Country.Code, c(yr_1960 : yr_2005)) %&gt;%\n  pivot_longer(cols = c(yr_1960 : yr_2005),\n               names_to = \"years\",\n               values_to = \"total_gdp\", \n               values_drop_na = TRUE) \n\n# All good here!\nnew_names &lt;- as.character(gov_expenditure[1, ])\ngov_expenditure &lt;- gov_expenditure[-1, ]\ncolnames(gov_expenditure) &lt;- new_names\n\n# All good here!\nclean_gov_expenditure &lt;- gov_expenditure %&gt;%\n  select('Country Code', c('1960' : '2006')) %&gt;%\n  pivot_longer(cols = c('1960' : '2006'),\n               names_to = \"years\",\n               values_to = \"expenditure\", \n               values_drop_na = TRUE)"
+  },
+  {
+    "objectID": "dw1/instructions-dw1.html",
+    "href": "dw1/instructions-dw1.html",
+    "title": "DW1 - Instructions",
+    "section": "",
+    "text": "Data Workshop #1 - PAC 2024\n\nObjective\nThe Data Workshop #1 (DW1) aims to equip participants with practical skills in handling real-world data, emphasizing teamwork, the application of course concepts, and hands-on experience with data analysis tools in R. The workshop guides participants through the data analysis process, from data cleaning to visualization, fostering both technical skills and collaborative problem-solving.\n\n\nStructure of the Workshop\nPhase 1: Data Cleaning and Preparation - Group Formation: Participants are divided into groups, each led by a designated leader who coordinates this initial phase. - Data Cleaning Tasks: Utilizing R tools and functions (e.g., dplyr, tidyr), each group will clean 2-3 datasets. Tasks include importing and transforming data using functions covered during weeks 1 and 2. - Collaboration: Groups work in breakout rooms, with periodic check-ins and guidance. - Outcome: Cleaned datasets ready for integration and further analysis.\nPhase 2: Data Integration and Initial Analysis - Central Review Session: Return to the main room for a collaborative session where instructors review the cleaning process and begin merging datasets. - Code Review and Feedback: Instructors provide feedback on the code and methodologies used by participants. - Discussion: Highlight learning points from the integration process.\nPhase 3: Data Visualization and Presentation - Visualization Creation: Participants create visualizations to answer specific research questions posed by the data. - Visualization Planning: Discuss and plan appropriate visualizations that effectively communicate findings. - Coding Visualizations: Using the same groups, participants code visualizations in R. - Instructor Review: Instructors integrate all code into a comprehensive folder. - Final Presentation: Groups present their findings and visualizations in a final session. - Portfolio Compilation: All visualizations and analyses are compiled into a website to showcase the collective work of the class.\n\n\nAbout Phase 1\nTidy Data Principles - Tidy Data Characteristics: - Each variable forms a column. - Each observation forms a row. - Each type of observational unit forms a table.\nWhy Tidy Data? Tidy data complements R’s vectorized operations and functions in packages like dplyr, tidyr, and ggplot2, which expect data to be organized this way. When data is tidy: - Simplified Manipulation: Functions that summarize data, like calculating means or plotting data, work more intuitively. - Straightforward Merging: With variables in columns and observations in rows, combining datasets can be as simple as joining tables based on a common variable. - Easy Conversion: Tools in tidyr, such as pivot_longer() and pivot_wider(), transform data between wide format (more columns, fewer rows) and long format (more rows, fewer columns) seamlessly.\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workshop 1",
+      "DW1 - Instructions"
+    ]
+  },
+  {
+    "objectID": "dw3/final_work-dw3.html#the-distribution-of-the-sample-means",
+    "href": "dw3/final_work-dw3.html#the-distribution-of-the-sample-means",
+    "title": "Final Work - Outcomes",
+    "section": "The Distribution of the Sample Means",
+    "text": "The Distribution of the Sample Means",
+    "crumbs": [
+      "Data Workshop 3",
+      "Final Work - Outcomes"
+    ]
+  },
+  {
+    "objectID": "dw3/final_work-dw3.html#point-estimate-confidence-interval-true-mean",
+    "href": "dw3/final_work-dw3.html#point-estimate-confidence-interval-true-mean",
+    "title": "Final Work - Outcomes",
+    "section": "Point Estimate + Confidence Interval + True Mean",
+    "text": "Point Estimate + Confidence Interval + True Mean",
+    "crumbs": [
+      "Data Workshop 3",
+      "Final Work - Outcomes"
+    ]
+  },
+  {
+    "objectID": "dw3/instructions-dw3.html",
+    "href": "dw3/instructions-dw3.html",
+    "title": "DW3 - Instructions",
+    "section": "",
+    "text": "The Data Workshop #3 (DW3) aims to provide participants with a practical experience in data transformation and analysis using real-world datasets. The workshop is divided into two main sections, each focusing on different aspects of data handling and statistical analysis, with an emphasis on applying recently covered course concepts.\n\n\n\nPhase 1: Data Transformation - Task: Manipulate data using concepts from the Programming in R part of the course. - Step 1: Clean the inspection_date column to remove the T00:00:00 timestamp. - Step 2: Separate numeric and character information in the risk column. - Step 3: Break down the address_facility column into facility_type and address. - Step 4: Join the inspections_info and food_establishment tables using the appropriate join function.\nPhase 2: Data Analysis - Section 1: Focus on applying the Central Limit Theorem (CLT), Point Estimates, and Confidence Intervals. - Population: Calculate the mean failure rate of restaurants from the full dataset. - Point Estimate: Conduct multiple rounds of sampling to estimate the mean failure rate and visualize the distribution of sample means. - Confidence Interval: Calculate and visualize the confidence interval around the sample mean, highlighting the population mean.\n\nSection 2: Engage in exploratory data analysis, creating visualizations and statistical summaries based on selected research questions.\n\nResearch Questions:\n\nSeasonal Trends in Food Safety Violations: Analyze and visualize seasonal trends in the frequency and types of food safety violations.\nRisk Analysis by Facility Type: Identify and compare high-risk violations across different facility types.\nEffectiveness of Canvass vs. Complaint-Driven Inspections: Compare violation rates between complaint-driven and canvass inspections.\nInspection Frequency by Weekday: Determine and visualize the frequency of food inspections by weekday.\n\n\n\n\n\n\nFood Inspection in Chicago: - food_establishment.csv: Contains information about food establishments inspected by the City of Chicago. - Columns: Inspection ID, DBA Name, AKA Name, License #, Risk, Address-Facility Type, City, State, Zip, Latitude, Longitude, Location.\n\ninspections_info.csv: Contains details about the inspections conducted in each establishment.\n\nColumns: Inspection ID, Inspection Date, Inspection Type, Violations, More Details, Results.\n\n\nThese datasets are sourced from the Chicago Data Portal.",
+    "crumbs": [
+      "Data Workshop 3",
+      "DW3 - Instructions"
+    ]
+  },
+  {
+    "objectID": "dw3/instructions-dw3.html#data-workshop-3---pac-2024",
+    "href": "dw3/instructions-dw3.html#data-workshop-3---pac-2024",
+    "title": "DW3 - Instructions",
+    "section": "",
+    "text": "The Data Workshop #3 (DW3) aims to provide participants with a practical experience in data transformation and analysis using real-world datasets. The workshop is divided into two main sections, each focusing on different aspects of data handling and statistical analysis, with an emphasis on applying recently covered course concepts.\n\n\n\nPhase 1: Data Transformation - Task: Manipulate data using concepts from the Programming in R part of the course. - Step 1: Clean the inspection_date column to remove the T00:00:00 timestamp. - Step 2: Separate numeric and character information in the risk column. - Step 3: Break down the address_facility column into facility_type and address. - Step 4: Join the inspections_info and food_establishment tables using the appropriate join function.\nPhase 2: Data Analysis - Section 1: Focus on applying the Central Limit Theorem (CLT), Point Estimates, and Confidence Intervals. - Population: Calculate the mean failure rate of restaurants from the full dataset. - Point Estimate: Conduct multiple rounds of sampling to estimate the mean failure rate and visualize the distribution of sample means. - Confidence Interval: Calculate and visualize the confidence interval around the sample mean, highlighting the population mean.\n\nSection 2: Engage in exploratory data analysis, creating visualizations and statistical summaries based on selected research questions.\n\nResearch Questions:\n\nSeasonal Trends in Food Safety Violations: Analyze and visualize seasonal trends in the frequency and types of food safety violations.\nRisk Analysis by Facility Type: Identify and compare high-risk violations across different facility types.\nEffectiveness of Canvass vs. Complaint-Driven Inspections: Compare violation rates between complaint-driven and canvass inspections.\nInspection Frequency by Weekday: Determine and visualize the frequency of food inspections by weekday.\n\n\n\n\n\n\nFood Inspection in Chicago: - food_establishment.csv: Contains information about food establishments inspected by the City of Chicago. - Columns: Inspection ID, DBA Name, AKA Name, License #, Risk, Address-Facility Type, City, State, Zip, Latitude, Longitude, Location.\n\ninspections_info.csv: Contains details about the inspections conducted in each establishment.\n\nColumns: Inspection ID, Inspection Date, Inspection Type, Violations, More Details, Results.\n\n\nThese datasets are sourced from the Chicago Data Portal.",
+    "crumbs": [
+      "Data Workshop 3",
+      "DW3 - Instructions"
+    ]
+  },
+  {
+    "objectID": "dw4/group-work-dw4.html",
+    "href": "dw4/group-work-dw4.html",
+    "title": "Group Work",
+    "section": "",
+    "text": "Student’s Code\n\n## Gender and Party\nanes$gender\nanes$party_id\n\n## Graph - histogram\nanes |&gt; \n  # Remove NAs\n  filter(!is.na(party_id)) |&gt; \n  count(party_id, gender) |&gt; \n  ggplot(aes(x = fct_reorder(party_id, n), y = n, fill = gender)) +\n  # Columns side by side - position = \"dodge\"\n  geom_col(position = \"dodge\") +\n  # Labels\n  labs(title = 'Male vs. Female by Party ID',\n       x = '',\n       y = '# Voters') +\n  theme_minimal() +\n  # Here we can add number of observations\n  geom_text(aes(label = n), position = position_dodge(width = 0.9), vjust = -0.5)\n\npal2 &lt;- brewer.pal(8, \"Set2\")\n\nanes |&gt; \n  # Remove NAs\n  filter(!is.na(party_id)) |&gt; \n  count(party_id, race) |&gt;\n  ggplot(aes(x = fct_reorder(party_id, n), y = n, fill = race)) +\n  geom_col(position = \"dodge\") +\n  labs(title = 'Distribution of voters across party ID by Race',\n       x = '',\n       y = '# Voters') +\n  theme_minimal() +\n  ## Add the pallete of colors to the race\n  scale_fill_manual(values = pal2)\n\n## Third graph\nanes |&gt; \n  # Remove NAs\n  filter(!is.na(party_id)) |&gt; \n  count(party_id, gender, prez_vote) |&gt; \n  # Dodge the bars by gender column and have it divided by partyID by presidential vote\n  ggplot(aes(x = fct_reorder(party_id, n), y = n, fill = party_id)) +\n  geom_col(position = \"dodge\") +\n  labs(title = 'Distribution of voters across party ID by Presidential Vote',\n       x = '',\n       y = '# Voters') +\n  theme_minimal() +\n  geom_text(aes(label = n), position = position_dodge(width = 0.9), vjust = -0.5) +\n  facet_wrap(~prez_vote)\n\n\n## Fourth graph\n## Graph - histogram\nanes |&gt; \n  # Remove NAs\n  filter(!is.na(ideo_type)) |&gt; \n  count(ideo_type, prez_vote) |&gt; \n  ggplot(aes(x = fct_reorder(ideo_type, n), y = n, fill = ideo_type)) +\n  geom_col(position = \"dodge\") +\n  labs(title = 'Distribution of voters across Ideology by Presidential Vote',\n       x = '',\n       y = '# Voters') +\n  theme_minimal() +\n  geom_text(aes(label = n), position = position_dodge(width = 0.9), vjust = -0.5) +\n  facet_wrap(~prez_vote)\n\n## Fifth graph\n## Graph\nanes |&gt; \n  # Remove NAs\n  filter(!is.na(socmed_use_scale)) |&gt; \n  ggplot(aes(x = socmed_use_scale)) +\n  geom_histogram(binwidth = 1, fill = \"lightblue\", color = \"black\") +\n  labs(title = 'Distribution of Social Media Use Scale',\n       x = 'Social Media Use Scale',\n       y = '# Voters') +\n  theme_minimal()\n\n## Reg-1\nreg1 &lt;- lm(pres_biden ~ is_democrat, data = anes, weights = weight_spss)\nsummary(reg1)\n\n\n\n\n\n Back to top",
+    "crumbs": [
+      "Data Workshop 4",
+      "Group Work"
+    ]
+  },
+  {
     "objectID": "about_dw.html#what-are-the-data-exploration-workshops",
     "href": "about_dw.html#what-are-the-data-exploration-workshops",
     "title": "Data Exploration Workshop",
@@ -97,25 +296,14 @@
     ]
   },
   {
-    "objectID": "group1.html#team-members",
-    "href": "group1.html#team-members",
-    "title": "Group 1",
-    "section": "Team members",
-    "text": "Team members\n\nMarcus Martinez\nRaimundo Gana\nFatima Zehra\nThompson D.",
+    "objectID": "dw2/group-work-dw2.html",
+    "href": "dw2/group-work-dw2.html",
+    "title": "Group Work",
+    "section": "",
+    "text": "Student’s Work - code\n\nlibrary(here)\nlibrary(tidyverse)\nlibrary(lubridate)\ncrime20 &lt;- read_csv(\"dc_crime2020.csv\")\ncrime21 &lt;- read_csv(\"dc_crime2021.csv\")\ncrime22 &lt;- read_csv(\"dc_crime2022.csv\")\ncrime23 &lt;- read_csv(\"dc_crime2023.csv\")\n\nglimpse(crime20)\n?rbind\ncrimebind&lt;- rbind(crime20,crime21,crime22,crime23)\n\n#Crime evolution by offense type\ncrimebind &lt;- crimebind%&gt;%\n  mutate(DATE = ymd_hms(REPORT_DAT))\n\ncrimebind&lt;-crimebind%&gt;%\n  mutate(YEAR = year(DATE))\nglimpse(crimebind)\n\ncrimebind%&gt;%\n  group_by(OFFENSE, YEAR)%&gt;%\n  filter(YEAR != 2024)%&gt;%\n  summarize(tot_crime_by_type = n())|&gt;\n  ggplot(aes(x=YEAR, y=tot_crime_by_type, color = OFFENSE))+\n  geom_line()+\n  theme_light()+\n  geom_point()+\n  labs(title = \"Evolution of crime by offense type - Washington DC\",\n       y = \"Offense type\",\n       x = \" \")+\n  scale_x_continuous(breaks = seq(2020,2023))+\n  theme(legend.position = \"bottom\")\n\n#Map - Areas of crime concentration\nlibrary(leaflet)\nlibrary(leaflet.extras)\n\ncrimebind|&gt;\n  leaflet()|&gt;\n  addTiles()|&gt;\n  addMarkers(lng = crimebind$long,\n             lat = crimebind$lat,\n             label = crimebind$OFFENSE,\n             clusterOptions = markerClusterOptions())\n\ndc_afh&lt;- read_csv(\"dc_afh.csv\")\n\n#Count current affordable housing projects in Washington DC + \n#Map classifying by status of projects\ndc_afh &lt;- dc_afh|&gt;\n  group_by(STATUS_PUBLIC)%&gt;%\n  count()\n\ndc_afh_completed &lt;- dc_afh%&gt;%\n  filter(STATUS_PUBLIC == \"Completed 2015 to Date\")\n\ndc_afh_undercons &lt;- dc_afh%&gt;%\n  filter(STATUS_PUBLIC == \"Under Construction\")\n\ndc_afh_pipeline &lt;- dc_afh%&gt;%\n  filter(STATUS_PUBLIC == \"Pipeline\")\n\nleaflet()|&gt;\n  addTiles()|&gt;\n  addCircleMarkers(lng = dc_afh_completed$long,\n             lat = dc_afh_completed$lat,\n             color = \"red\",\n             label = dc_afh_completed$STATUS_PUBLIC,\n             clusterOptions = markerClusterOptions())|&gt;\n  addCircleMarkers(lng = dc_afh_undercons$long,\n                   lat = dc_afh_undercons$lat,\n                   color = \"blue\",\n                   label = dc_afh_undercons$STATUS_PUBLIC,\n                   clusterOptions = markerClusterOptions())|&gt;\n  addCircleMarkers(lng = dc_afh_pipeline$long,\n                   lat = dc_afh_pipeline$lat,\n                   color = \"green\",\n                   label = dc_afh_pipeline$STATUS_PUBLIC,\n                   clusterOptions = markerClusterOptions())\n\n#Phase 3 - Top 8 crimes map\n#Note: couldn't install package Sf, thus map is generated using only leaflet (w/o combining with income nor affordable housing data)\n\ntop8_crime &lt;- crimebind |&gt;\n  group_by(OFFENSE) |&gt;\n  summarize(total = n()) |&gt;\n  arrange(desc(total)) |&gt;\n  head(8) |&gt;\n  pull(OFFENSE)\n\npal &lt;- colorFactor(\n  palette = 'Dark2',\n  domain = top8_crime\n)\n\ncrimebind%&gt;%\n  filter(OFFENSE %in% top8_crime &\n           YEAR == 2023)|&gt;\n  leaflet()|&gt;\n  addTiles()|&gt;\n  addCircleMarkers(lng = crimebind$long,\n                   lat = crimebind$lat,\n                   radius = 2,\n                   color = pal(crimebind$OFFENSE),\n                   label = crimebind$OFFENSE)\n\n\n\n\n\n Back to top",
     "crumbs": [
-      "Data Workshop 1",
-      "Group 1"
-    ]
-  },
-  {
-    "objectID": "group1.html#phase-1-data-cleaning-and-preparation",
-    "href": "group1.html#phase-1-data-cleaning-and-preparation",
-    "title": "Group 1",
-    "section": "Phase 1: Data Cleaning and Preparation",
-    "text": "Phase 1: Data Cleaning and Preparation\n\n# General Feedback:\n# - Good use of tidyverse for data manipulation, which is powerful and expressive.\n# - Consistent formatting in code makes it easier to read and maintain.\n# - Consider commenting the script a bit more!\n\n# All good here!\nfolder_path = \"/Users/faelmassa/Desktop/Project Drac de Fusta/Harris PAC - AvrMai24/Policy Analytics Credential - UChicago Harris/Lectures/Week 3 - L10 - L14/Workshop 2/\"\nsetwd(folder_path)\n\n# Normally, we can just run in the console the `getwd()` function! It's a one time run!\ngetwd()\n\n# All good here!\nlibrary(tidyverse)\n\n# All good here!\nslums &lt;- read.csv(\"1-wb-slum_population.csv\")\nruralpop &lt;- read_csv(\"2-wb-rural_population.csv\", skip = 4) \n\n# All good here!\nglimpse(ruralpop)\ncolnames(ruralpop)\n\n# Almost all good!\n# Issue: column's name (remember, R don't like empty spaces)\nruralpop &lt;- ruralpop %&gt;%\n  pivot_longer(cols = \"1960\":\"2023\",\n               names_to = \"Year\",\n               values_to = \"Rural Pop (%)\")\n\n# All good here!\nruralpop &lt;- ruralpop[, -4]\n\n# Almost all good!\n# Issue (same from above): column's name (remember, R don't like empty spaces)\nruralpop_3 &lt;- ruralpop %&gt;%\n  mutate(`Country Code` = str_sub(`Country Code`, 5, 7))\n\n# Same issue!\nruralpop_final &lt;- ruralpop_3 %&gt;%\n  select(`Country Code`, `Indicator Code`, Year, `Rural Pop (%)`)\n\n# All good here!\nruralpop_final &lt;- ruralpop_final %&gt;%\n  mutate(Year = as.numeric(Year))",
-    "crumbs": [
-      "Data Workshop 1",
-      "Group 1"
+      "Data Workshop 2",
+      "Group Work"
     ]
   }
 ]
