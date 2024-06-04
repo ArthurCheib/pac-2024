@@ -249,6 +249,43 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#students-work---outcome-3" id="toc-students-work---outcome-3" class="nav-link" data-scroll-target="#students-work---outcome-3">Student’s Work - Outcome 3</a></li>
   <li><a href="#students-work---outcome-4" id="toc-students-work---outcome-4" class="nav-link" data-scroll-target="#students-work---outcome-4">Student’s Work - Outcome 4</a></li>
   <li><a href="#students-work---outcome-5" id="toc-students-work---outcome-5" class="nav-link" data-scroll-target="#students-work---outcome-5">Student’s Work - Outcome 5</a></li>
+  <li><a href="#librarystargazer" id="toc-librarystargazer" class="nav-link" data-scroll-target="#librarystargazer">library(stargazer)</a></li>
+  <li><a href="#reg1---lmpres_biden-is_democrat-data-anes-weights-weight_spss" id="toc-reg1---lmpres_biden-is_democrat-data-anes-weights-weight_spss" class="nav-link" data-scroll-target="#reg1---lmpres_biden-is_democrat-data-anes-weights-weight_spss">reg1 &lt;- lm(pres_biden ~ is_democrat, data = anes, weights = weight_spss)</a></li>
+  <li><a href="#model_summary---tidyreg1" id="toc-model_summary---tidyreg1" class="nav-link" data-scroll-target="#model_summary---tidyreg1">model_summary &lt;- tidy(reg1)</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section"></a></li>
+  <li><a href="#create-a-gt-table-from-the-model-summary" id="toc-create-a-gt-table-from-the-model-summary" class="nav-link" data-scroll-target="#create-a-gt-table-from-the-model-summary"># Create a gt table from the model summary</a></li>
+  <li><a href="#gt_table---gtdata-model_summary" id="toc-gt_table---gtdata-model_summary" class="nav-link" data-scroll-target="#gt_table---gtdata-model_summary">gt_table &lt;- gt(data = model_summary) %&gt;%</a></li>
+  <li><a href="#tab_header" id="toc-tab_header" class="nav-link" data-scroll-target="#tab_header">tab_header(</a></li>
+  <li><a href="#title-regression-results" id="toc-title-regression-results" class="nav-link" data-scroll-target="#title-regression-results">title = “Regression Results”,</a></li>
+  <li><a href="#subtitle-linear-model-of-pres_biden" id="toc-subtitle-linear-model-of-pres_biden" class="nav-link" data-scroll-target="#subtitle-linear-model-of-pres_biden">subtitle = “Linear Model of pres_biden”</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">) %&gt;%</a></li>
+  <li><a href="#cols_label" id="toc-cols_label" class="nav-link" data-scroll-target="#cols_label">cols_label(</a></li>
+  <li><a href="#term-term" id="toc-term-term" class="nav-link" data-scroll-target="#term-term">term = “Term”,</a></li>
+  <li><a href="#estimate-estimate" id="toc-estimate-estimate" class="nav-link" data-scroll-target="#estimate-estimate">estimate = “Estimate”,</a></li>
+  <li><a href="#std.error-std.-error" id="toc-std.error-std.-error" class="nav-link" data-scroll-target="#std.error-std.-error">std.error = “Std. Error”,</a></li>
+  <li><a href="#statistic-statistic" id="toc-statistic-statistic" class="nav-link" data-scroll-target="#statistic-statistic">statistic = “Statistic”,</a></li>
+  <li><a href="#p.value-p-value" id="toc-p.value-p-value" class="nav-link" data-scroll-target="#p.value-p-value">p.value = “P-Value”</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">) %&gt;%</a></li>
+  <li><a href="#fmt_number" id="toc-fmt_number" class="nav-link" data-scroll-target="#fmt_number">fmt_number(</a></li>
+  <li><a href="#columns-varsestimate-std.error-statistic-p.value" id="toc-columns-varsestimate-std.error-statistic-p.value" class="nav-link" data-scroll-target="#columns-varsestimate-std.error-statistic-p.value">columns = vars(estimate, std.error, statistic, p.value),</a></li>
+  <li><a href="#decimals-3" id="toc-decimals-3" class="nav-link" data-scroll-target="#decimals-3">decimals = 3</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">) %&gt;%</a></li>
+  <li><a href="#tab_style" id="toc-tab_style" class="nav-link" data-scroll-target="#tab_style">tab_style(</a></li>
+  <li><a href="#style-cell_textweight-bold" id="toc-style-cell_textweight-bold" class="nav-link" data-scroll-target="#style-cell_textweight-bold">style = cell_text(weight = “bold”),</a></li>
+  <li><a href="#locations-cells_column_labelseverything" id="toc-locations-cells_column_labelseverything" class="nav-link" data-scroll-target="#locations-cells_column_labelseverything">locations = cells_column_labels(everything())</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">) %&gt;%</a></li>
+  <li><a href="#tab_style-1" id="toc-tab_style-1" class="nav-link" data-scroll-target="#tab_style-1">tab_style(</a></li>
+  <li><a href="#style-cell_fillcolor-lightblue" id="toc-style-cell_fillcolor-lightblue" class="nav-link" data-scroll-target="#style-cell_fillcolor-lightblue">style = cell_fill(color = “lightblue”),</a></li>
+  <li><a href="#locations-cells_titlegroups-title" id="toc-locations-cells_titlegroups-title" class="nav-link" data-scroll-target="#locations-cells_titlegroups-title">locations = cells_title(groups = “title”)</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">)</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6"></a></li>
+  <li><a href="#save-the-gt-table-as-an-html-file" id="toc-save-the-gt-table-as-an-html-file" class="nav-link" data-scroll-target="#save-the-gt-table-as-an-html-file"># Save the gt table as an HTML file</a></li>
+  <li><a href="#gtsavegt_table-regression_table.html" id="toc-gtsavegt_table-regression_table.html" class="nav-link" data-scroll-target="#gtsavegt_table-regression_table.html">gtsave(gt_table, “regression_table.html”)</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7"></a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8"></a></li>
+  <li><a href="#nice-output-format-html-for-regression-table" id="toc-nice-output-format-html-for-regression-table" class="nav-link" data-scroll-target="#nice-output-format-html-for-regression-table"># ## Nice output format (html) for regression table</a></li>
+  <li><a href="#html_output---stargazerreg1-type-html-out-regression_table.html" id="toc-html_output---stargazerreg1-type-html-out-regression_table.html" class="nav-link" data-scroll-target="#html_output---stargazerreg1-type-html-out-regression_table.html"># html_output &lt;- stargazer(reg1, type = “html”, out = “regression_table.html”)</a></li>
+  <li><a href="#cathtml_output-file-regression_table.html" id="toc-cathtml_output-file-regression_table.html" class="nav-link" data-scroll-target="#cathtml_output-file-regression_table.html"># cat(html_output, file = “regression_table.html”)</a></li>
   </ul>
 </nav>
     </div>
@@ -315,27 +352,118 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="students-work---outcome-5" class="level2">
 <h2 class="anchored" data-anchor-id="students-work---outcome-5">Student’s Work - Outcome 5</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>
-&lt;table style="text-align:center"&gt;&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;em&gt;Dependent variable:&lt;/em&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td&gt;&lt;/td&gt;&lt;td colspan="1" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;pres_biden&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;is_democrat&lt;/td&gt;&lt;td&gt;0.512&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;(0.023)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;Constant&lt;/td&gt;&lt;td&gt;0.182&lt;sup&gt;***&lt;/sup&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;(0.013)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;/td&gt;&lt;td&gt;&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;Observations&lt;/td&gt;&lt;td&gt;1,483&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.256&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;Adjusted R&lt;sup&gt;2&lt;/sup&gt;&lt;/td&gt;&lt;td&gt;0.255&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;Residual Std. Error&lt;/td&gt;&lt;td&gt;0.374 (df = 1481)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td style="text-align:left"&gt;F Statistic&lt;/td&gt;&lt;td&gt;508.496&lt;sup&gt;***&lt;/sup&gt; (df = 1; 1481)&lt;/td&gt;&lt;/tr&gt;
-&lt;tr&gt;&lt;td colspan="2" style="border-bottom: 1px solid black"&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td style="text-align:left"&gt;&lt;em&gt;Note:&lt;/em&gt;&lt;/td&gt;&lt;td style="text-align:right"&gt;&lt;sup&gt;*&lt;/sup&gt;p&lt;0.1; &lt;sup&gt;**&lt;/sup&gt;p&lt;0.05; &lt;sup&gt;***&lt;/sup&gt;p&lt;0.01&lt;/td&gt;&lt;/tr&gt;
-&lt;/table&gt;</code></pre>
-</div>
-</div>
+<p><img src="images/output-table.png" class="img-fluid"></p>
+</section>
+<section id="librarystargazer" class="level1">
+<h1>library(stargazer)</h1>
+</section>
+<section id="reg1---lmpres_biden-is_democrat-data-anes-weights-weight_spss" class="level1">
+<h1>reg1 &lt;- lm(pres_biden ~ is_democrat, data = anes, weights = weight_spss)</h1>
+</section>
+<section id="model_summary---tidyreg1" class="level1">
+<h1>model_summary &lt;- tidy(reg1)</h1>
+</section>
+<section id="section" class="level1">
+<h1></h1>
+</section>
+<section id="create-a-gt-table-from-the-model-summary" class="level1">
+<h1># Create a gt table from the model summary</h1>
+</section>
+<section id="gt_table---gtdata-model_summary" class="level1">
+<h1>gt_table &lt;- gt(data = model_summary) %&gt;%</h1>
+</section>
+<section id="tab_header" class="level1">
+<h1>tab_header(</h1>
+</section>
+<section id="title-regression-results" class="level1">
+<h1>title = “Regression Results”,</h1>
+</section>
+<section id="subtitle-linear-model-of-pres_biden" class="level1">
+<h1>subtitle = “Linear Model of pres_biden”</h1>
+</section>
+<section id="section-1" class="level1">
+<h1>) %&gt;%</h1>
+</section>
+<section id="cols_label" class="level1">
+<h1>cols_label(</h1>
+</section>
+<section id="term-term" class="level1">
+<h1>term = “Term”,</h1>
+</section>
+<section id="estimate-estimate" class="level1">
+<h1>estimate = “Estimate”,</h1>
+</section>
+<section id="std.error-std.-error" class="level1">
+<h1>std.error = “Std. Error”,</h1>
+</section>
+<section id="statistic-statistic" class="level1">
+<h1>statistic = “Statistic”,</h1>
+</section>
+<section id="p.value-p-value" class="level1">
+<h1>p.value = “P-Value”</h1>
+</section>
+<section id="section-2" class="level1">
+<h1>) %&gt;%</h1>
+</section>
+<section id="fmt_number" class="level1">
+<h1>fmt_number(</h1>
+</section>
+<section id="columns-varsestimate-std.error-statistic-p.value" class="level1">
+<h1>columns = vars(estimate, std.error, statistic, p.value),</h1>
+</section>
+<section id="decimals-3" class="level1">
+<h1>decimals = 3</h1>
+</section>
+<section id="section-3" class="level1">
+<h1>) %&gt;%</h1>
+</section>
+<section id="tab_style" class="level1">
+<h1>tab_style(</h1>
+</section>
+<section id="style-cell_textweight-bold" class="level1">
+<h1>style = cell_text(weight = “bold”),</h1>
+</section>
+<section id="locations-cells_column_labelseverything" class="level1">
+<h1>locations = cells_column_labels(everything())</h1>
+</section>
+<section id="section-4" class="level1">
+<h1>) %&gt;%</h1>
+</section>
+<section id="tab_style-1" class="level1">
+<h1>tab_style(</h1>
+</section>
+<section id="style-cell_fillcolor-lightblue" class="level1">
+<h1>style = cell_fill(color = “lightblue”),</h1>
+</section>
+<section id="locations-cells_titlegroups-title" class="level1">
+<h1>locations = cells_title(groups = “title”)</h1>
+</section>
+<section id="section-5" class="level1">
+<h1>)</h1>
+</section>
+<section id="section-6" class="level1">
+<h1></h1>
+</section>
+<section id="save-the-gt-table-as-an-html-file" class="level1">
+<h1># Save the gt table as an HTML file</h1>
+</section>
+<section id="gtsavegt_table-regression_table.html" class="level1">
+<h1>gtsave(gt_table, “regression_table.html”)</h1>
+</section>
+<section id="section-7" class="level1">
+<h1></h1>
+</section>
+<section id="section-8" class="level1">
+<h1></h1>
+</section>
+<section id="nice-output-format-html-for-regression-table" class="level1">
+<h1># ## Nice output format (html) for regression table</h1>
+</section>
+<section id="html_output---stargazerreg1-type-html-out-regression_table.html" class="level1">
+<h1># html_output &lt;- stargazer(reg1, type = “html”, out = “regression_table.html”)</h1>
+</section>
+<section id="cathtml_output-file-regression_table.html" class="level1">
+<h1># cat(html_output, file = “regression_table.html”)</h1>
 
 
 </section>
